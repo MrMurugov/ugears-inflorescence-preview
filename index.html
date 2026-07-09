@@ -199,7 +199,7 @@ html.reveal-js [data-reveal][data-reveal-state="visible"]{opacity:1;transform:tr
       </div>
       <div data-reveal data-reveal-delay="120">
         <!-- Asset note: product overview uses the clean tulip set loop; replace with a final assembled bouquet hero shot if a higher-quality campaign asset arrives. -->
-        <div style="position:relative;aspect-ratio:16/10;border-radius:14px;overflow:hidden;background:#fbf6ee;border:1px solid rgba(41,35,29,.12);display:flex;align-items:center;justify-content:center;box-shadow:0 24px 60px -28px rgba(41,35,29,.4);">
+        <div style="position:relative;aspect-ratio:4/3;border-radius:14px;overflow:hidden;background:#fbf6ee;border:1px solid rgba(41,35,29,.12);display:flex;align-items:center;justify-content:center;box-shadow:0 24px 60px -28px rgba(41,35,29,.4);">
           <video aria-label="Tulip model opening and closing" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" poster="uploads/photo-ready/usable-originals/set-tulip-motion.gif" style="width:100%;height:100%;object-fit:cover;display:block;">
             <source src="uploads/photo-ready/videos/product-tulip-set.mp4" type="video/mp4"/>
           </video>
@@ -260,7 +260,7 @@ html.reveal-js [data-reveal][data-reveal-state="visible"]{opacity:1;transform:tr
     </div>
 
     <!-- Asset note: replace this collection banner with the final Kickstarter "stages of love" artwork when available. -->
-    <div data-reveal style="margin-top:18px;position:relative;aspect-ratio:1360/615;border-radius:14px;overflow:hidden;background:#fbf6ee;border:1px solid rgba(41,35,29,.08);">
+    <div data-reveal style="margin-top:18px;position:relative;aspect-ratio:3/2;border-radius:14px;overflow:hidden;background:#fbf6ee;border:1px solid rgba(41,35,29,.08);">
       <img src="uploads/photo-ready/usable-originals/lineup-all-flowers.png" alt="Five mechanical flowers in the Inflorescence collection" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;"/>
     </div>
     <div data-reveal style="margin-top:clamp(40px,5vw,56px);display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;">
@@ -334,7 +334,7 @@ html.reveal-js [data-reveal][data-reveal-state="visible"]{opacity:1;transform:tr
       </div>
       <div style="flex:1 1 320px;min-width:min(100%,280px);">
         <!-- Asset note: replace with the final VIP fidgets full-set photo when supplied. Current image keeps the block visual without showing production notes. -->
-        <div style="aspect-ratio:1360/615;border-radius:12px;overflow:hidden;background:#201812;border:1px solid rgba(245,238,226,.14);transition:transform .3s;" style-hover="transform:translateY(-4px);">
+        <div style="aspect-ratio:3/2;border-radius:12px;overflow:hidden;background:#201812;border:1px solid rgba(245,238,226,.14);transition:transform .3s;" style-hover="transform:translateY(-4px);">
           <img src="uploads/photo-ready/usable-originals/lineup-all-flowers.png" alt="Ugears mechanical flower collection" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;"/>
         </div>
       </div>
@@ -351,7 +351,7 @@ html.reveal-js [data-reveal][data-reveal-state="visible"]{opacity:1;transform:tr
     <div data-reveal style="margin-top:clamp(40px,5vw,60px);display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;">
       <sc-for list="{{ assemblySteps }}" as="s" hint-placeholder-count="4">
         <div style="background:#fbf6ee;border:1px solid rgba(41,35,29,.08);border-radius:15px;padding:16px 16px 22px;">
-          <div style="aspect-ratio:5/4;border-radius:10px;overflow:hidden;background:#fbf6ee;border:1px solid rgba(41,35,29,.08);margin-bottom:16px;">
+          <div style="aspect-ratio:4/3;border-radius:10px;overflow:hidden;background:#fbf6ee;border:1px solid rgba(41,35,29,.08);margin-bottom:16px;">
             <sc-if value="{{ s.isVideo }}" hint-placeholder-val="{{ false }}">
               <video aria-label="{{ s.alt }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" style="width:100%;height:100%;object-fit:cover;display:block;">
                 <source src="{{ s.src }}" type="video/mp4"/>
