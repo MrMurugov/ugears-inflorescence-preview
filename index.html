@@ -1,0 +1,1066 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="uploads/ugears-wordmark-dark.svg">
+<script>
+document.documentElement.classList.add('reveal-js');
+setTimeout(function () {
+  if (!document.documentElement.classList.contains('reveal-active')) document.documentElement.classList.remove('reveal-js');
+}, 4000);
+</script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Fixel Display';font-style:normal;font-weight:400;font-display:swap;src:url('https://cdn.jsdelivr.net/gh/MacPaw/Fixel@main/fonts/webfonts/FixelDisplay-Regular.woff2') format('woff2')}
+@font-face{font-family:'Fixel Display';font-style:normal;font-weight:500;font-display:swap;src:url('https://cdn.jsdelivr.net/gh/MacPaw/Fixel@main/fonts/webfonts/FixelDisplay-Medium.woff2') format('woff2')}
+@font-face{font-family:'Fixel Display';font-style:normal;font-weight:600;font-display:swap;src:url('https://cdn.jsdelivr.net/gh/MacPaw/Fixel@main/fonts/webfonts/FixelDisplay-SemiBold.woff2') format('woff2')}
+@font-face{font-family:'Fixel Display';font-style:normal;font-weight:700;font-display:swap;src:url('https://cdn.jsdelivr.net/gh/MacPaw/Fixel@main/fonts/webfonts/FixelDisplay-Bold.woff2') format('woff2')}
+@font-face{font-family:'Fixel Display';font-style:normal;font-weight:800;font-display:swap;src:url('https://cdn.jsdelivr.net/gh/MacPaw/Fixel@main/fonts/webfonts/FixelDisplay-ExtraBold.woff2') format('woff2')}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#f7f1e7;color:#29231d;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:#a05a60;text-decoration:none}
+a:hover{color:#b76e74}
+input,button,textarea{font-family:inherit}
+button{color:inherit}
+::selection{background:#e7c4c0;color:#29231d}
+@keyframes floatGlow{0%,100%{transform:translate(0,0) scale(1);opacity:.62}50%{transform:translate(0,-22px) scale(1.07);opacity:.9}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes gearTurn{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes gearTurnReverse{from{transform:rotate(360deg)}to{transform:rotate(0deg)}}
+.circle-center{display:inline-grid!important;place-items:center!important;text-align:center;line-height:1!important}
+.circle-center__text{display:block;line-height:1;transform:translateY(.02em)}
+.circle-center--numeric .circle-center__text{font-family:Inter,system-ui,sans-serif;font-variant-numeric:tabular-nums;font-feature-settings:'tnum' 1,'lnum' 1;letter-spacing:0}
+.footer-gear{position:absolute;display:block;height:auto;pointer-events:none;user-select:none;will-change:transform}
+.footer-gear--left{width:clamp(260px,31vw,500px);left:clamp(-210px,-9vw,-104px);bottom:clamp(-224px,-12vw,-124px);opacity:.085;animation:gearTurn 50s linear infinite;animation-delay:-18s}
+.footer-gear--left-fill{width:clamp(150px,17vw,285px);left:clamp(145px,11vw,230px);bottom:clamp(-154px,-7vw,-82px);opacity:.038;animation:gearTurnReverse 67s linear infinite;animation-delay:-41s}
+.footer-gear--right-fill{width:clamp(280px,31vw,510px);right:clamp(-214px,-10vw,-112px);bottom:clamp(-212px,-11vw,-120px);opacity:.048;animation:gearTurnReverse 59s linear infinite;animation-delay:-27s}
+.footer-gear--right{width:clamp(142px,16vw,270px);right:clamp(180px,14vw,270px);bottom:clamp(-96px,-4vw,-52px);opacity:.072;animation:gearTurn 46s linear infinite;animation-delay:-9s}
+.footer-gear--small{width:clamp(94px,9vw,150px);right:clamp(58px,5vw,98px);bottom:clamp(134px,10vw,176px);opacity:.052;animation:gearTurnReverse 39s linear infinite;animation-delay:-23s}
+.footer-gear--top-left-fill{width:clamp(230px,26vw,430px);left:clamp(-180px,-8vw,-88px);top:clamp(-184px,-9vw,-96px);opacity:.036;animation:gearTurnReverse 64s linear infinite;animation-delay:-35s}
+.footer-gear--top-left{width:clamp(112px,12vw,210px);left:clamp(116px,9vw,188px);top:clamp(-76px,-3vw,-36px);opacity:.058;animation:gearTurn 42s linear infinite;animation-delay:-13s}
+.footer-gear--top-right{width:clamp(240px,27vw,450px);right:clamp(-198px,-9vw,-98px);top:clamp(-190px,-9vw,-102px);opacity:.052;animation:gearTurn 55s linear infinite;animation-delay:-22s}
+.footer-gear--top-right-fill{width:clamp(118px,13vw,230px);right:clamp(122px,9vw,190px);top:clamp(-96px,-4vw,-50px);opacity:.031;animation:gearTurnReverse 72s linear infinite;animation-delay:-51s}
+.decor-gear{position:absolute;display:block;height:auto;pointer-events:none;user-select:none;will-change:transform;z-index:1}
+.decor-gear--hero-left{width:clamp(235px,26vw,440px);left:clamp(-188px,-8vw,-96px);bottom:clamp(-150px,-8vw,-82px);opacity:.068;animation:gearTurn 57s linear infinite;animation-delay:-33s}
+.decor-gear--hero-left-fill{width:clamp(115px,13vw,230px);left:clamp(122px,9vw,196px);bottom:clamp(-82px,-3vw,-34px);opacity:.033;animation:gearTurnReverse 71s linear infinite;animation-delay:-12s}
+.decor-gear--hero-right-fill{width:clamp(250px,27vw,470px);right:clamp(-198px,-9vw,-104px);bottom:clamp(-194px,-10vw,-106px);opacity:.041;animation:gearTurnReverse 61s linear infinite;animation-delay:-46s}
+.decor-gear--hero-right{width:clamp(135px,15vw,250px);right:clamp(38px,4vw,84px);bottom:clamp(10px,2vw,42px);opacity:.056;animation:gearTurn 44s linear infinite;animation-delay:-20s}
+.decor-gear--vip-top-left-fill{width:clamp(240px,26vw,440px);left:clamp(-204px,-9vw,-104px);top:clamp(-188px,-9vw,-96px);opacity:.038;animation:gearTurnReverse 60s linear infinite;animation-delay:-36s}
+.decor-gear--vip-top-left{width:clamp(112px,12vw,210px);left:clamp(132px,10vw,205px);top:clamp(-76px,-3vw,-38px);opacity:.064;animation:gearTurn 43s linear infinite;animation-delay:-14s}
+.decor-gear--vip-top-right{width:clamp(260px,29vw,480px);right:clamp(-218px,-10vw,-112px);top:clamp(-196px,-9vw,-104px);opacity:.058;animation:gearTurn 52s linear infinite;animation-delay:-25s}
+.decor-gear--vip-top-right-fill{width:clamp(120px,13vw,230px);right:clamp(148px,11vw,225px);top:clamp(-92px,-4vw,-48px);opacity:.033;animation:gearTurnReverse 66s linear infinite;animation-delay:-49s}
+.decor-gear--vip-bottom-left{width:clamp(205px,22vw,360px);left:clamp(-158px,-7vw,-76px);bottom:clamp(-168px,-8vw,-88px);opacity:.052;animation:gearTurnReverse 55s linear infinite;animation-delay:-19s}
+.decor-gear--vip-bottom-left-fill{width:clamp(98px,10vw,180px);left:clamp(92px,7vw,150px);bottom:clamp(-58px,-2vw,-24px);opacity:.032;animation:gearTurn 74s linear infinite;animation-delay:-8s}
+.decor-gear--vip-bottom-right-fill{width:clamp(230px,25vw,420px);right:clamp(-172px,-8vw,-86px);bottom:clamp(-188px,-9vw,-98px);opacity:.041;animation:gearTurnReverse 63s linear infinite;animation-delay:-31s}
+.decor-gear--vip-bottom-right{width:clamp(125px,14vw,240px);right:clamp(128px,10vw,198px);bottom:clamp(-92px,-4vw,-46px);opacity:.058;animation:gearTurn 45s linear infinite;animation-delay:-53s}
+@media (max-width:720px){.decor-gear--hero-left{width:270px;left:-162px;bottom:-96px;opacity:.048}.decor-gear--hero-left-fill{width:136px;left:58px;bottom:-44px;opacity:.027}.decor-gear--hero-right-fill{width:286px;right:-170px;bottom:-126px;opacity:.032}.decor-gear--hero-right{width:150px;right:-8px;bottom:4px;opacity:.042}.decor-gear--vip-top-left-fill{width:238px;left:-162px;top:-126px;opacity:.028}.decor-gear--vip-top-left{width:118px;left:54px;top:-42px;opacity:.042}.decor-gear--vip-top-right{width:258px;right:-168px;top:-138px;opacity:.04}.decor-gear--vip-top-right-fill{width:124px;right:46px;top:-58px;opacity:.027}.decor-gear--vip-bottom-left{width:218px;left:-146px;bottom:-116px;opacity:.034}.decor-gear--vip-bottom-left-fill{width:104px;left:42px;bottom:-34px;opacity:.024}.decor-gear--vip-bottom-right-fill{width:238px;right:-150px;bottom:-130px;opacity:.031}.decor-gear--vip-bottom-right{width:122px;right:40px;bottom:-54px;opacity:.038}}
+@media (max-width:720px){.footer-gear--top-left-fill{width:226px;left:-150px;top:-122px;opacity:.026}.footer-gear--top-left{width:112px;left:48px;top:-42px;opacity:.038}.footer-gear--top-right{width:244px;right:-158px;top:-132px;opacity:.035}.footer-gear--top-right-fill{width:118px;right:38px;top:-58px;opacity:.024}.footer-gear--left{width:258px;left:-164px;bottom:-128px;opacity:.05}.footer-gear--left-fill{width:132px;left:50px;bottom:-58px;opacity:.025}.footer-gear--right-fill{width:262px;right:-166px;bottom:-138px;opacity:.032}.footer-gear--right{width:126px;right:44px;bottom:-56px;opacity:.041}.footer-gear--small{width:92px;right:20px;bottom:86px;opacity:.032}}
+html.reveal-js [data-reveal]{opacity:0;transform:translate3d(0,34px,0);transition:opacity .78s cubic-bezier(.2,.7,.2,1),transform .78s cubic-bezier(.2,.7,.2,1);will-change:opacity,transform}
+html.reveal-js [data-reveal][data-reveal-state="visible"]{opacity:1;transform:translate3d(0,0,0)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}html.reveal-js [data-reveal]{opacity:1!important;transform:none!important}.footer-gear,.decor-gear{animation:none!important}}
+</style>
+</helmet>
+<div ref="{{ setRoot }}" style="overflow-x:hidden;">
+
+<a ref="{{ setAnn }}" href="#vip" onClick="{{ goVip }}" style="position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:center;gap:9px;padding:11px clamp(16px,5vw,40px);background:#b76e74;color:#fff7f0;font:700 12.5px/1.35 Inter,sans-serif;letter-spacing:.01em;text-align:center;cursor:pointer;transition:background .25s ease;" style-hover="background:#a86169;">
+  <span>Reserve your VIP spot for <strong style="font-weight:900;color:#ffffff;">$1</strong> and save up to 40%</span>
+</a>
+
+<nav ref="{{ setNav }}" style="--nav-ink:#f8f0e5;--nav-logo-filter:brightness(0) invert(1);--nav-menu-line:#f8f0e5;position:fixed;top:40px;left:0;right:0;z-index:800;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:13px clamp(18px,5vw,40px);background:transparent;backdrop-filter:none;border-bottom:1px solid rgba(248,240,229,0);transition:transform .4s cubic-bezier(.22,.61,.36,1),box-shadow .4s ease,background .28s ease,border-color .28s ease,backdrop-filter .28s ease;">
+  <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+    <div style="display:contents;">
+      <a href="#top" onClick="{{ goTop }}" style="display:flex;align-items:center;" aria-label="Ugears">
+        <img src="uploads/ugears-wordmark-dark.svg" alt="Ugears" style="height:22px;width:auto;display:block;filter:var(--nav-logo-filter);transition:filter .28s ease;"/>
+      </a>
+      <div style="display:flex;align-items:center;gap:clamp(14px,2vw,28px);">
+        <sc-for list="{{ navLinks }}" as="l" hint-placeholder-count="6"><a href="{{ l.href }}" onClick="{{ l.onClick }}" style="font:600 13px/1 Inter,sans-serif;color:var(--nav-ink);letter-spacing:.01em;transition:color .2s;" style-hover="color:#f0c9c4;">{{ l.t }}</a></sc-for>
+        <button onClick="{{ goVip }}" style="padding:10px 18px;background:#b76e74;color:#fdf7ef;border:none;border-radius:100px;font:700 13px/1 Inter,sans-serif;letter-spacing:.01em;cursor:pointer;transition:background .2s;" style-hover="background:#a05a60;">Reserve for $1</button>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <div style="display:contents;">
+      <button onClick="{{ toggleMobile }}" aria-label="{{ mobileMenuLabel }}" aria-expanded="{{ mobileOpen }}" style="{{ mobileBurgerButtonStyle }}">
+        <span style="{{ mobileBurgerLineTopStyle }}"></span>
+        <span style="{{ mobileBurgerLineMiddleStyle }}"></span>
+        <span style="{{ mobileBurgerLineBottomStyle }}"></span>
+      </button>
+      <a href="#top" onClick="{{ goTop }}" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;" aria-label="Ugears">
+        <img src="uploads/ugears-wordmark-dark.svg" alt="Ugears" style="height:22px;width:auto;display:block;filter:var(--nav-logo-filter);transition:filter .28s ease;"/>
+      </a>
+      <button class="circle-center circle-center--numeric" onClick="{{ goVip }}" aria-label="Reserve VIP spot for 1 dollar" style="{{ mobileNavCtaStyle }}"><span class="circle-center__text">1$</span></button>
+    </div>
+  </sc-if>
+</nav>
+
+<sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+  <div data-mobile-menu-backdrop onClick="{{ toggleMobile }}" style="{{ mobileMenuBackdropStyle }}" aria-hidden="{{ mobileMenuClosed }}"></div>
+  <div data-mobile-menu style="{{ mobileMenuPanelStyle }}" aria-hidden="{{ mobileMenuClosed }}">
+    <sc-for list="{{ navLinks }}" as="l" hint-placeholder-count="6">
+      <a href="{{ l.href }}" onClick="{{ l.onClick }}" style="{{ mobileMenuLinkStyle }}">{{ l.t }}</a>
+    </sc-for>
+  </div>
+</sc-if>
+
+<section id="top" style="position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:radial-gradient(125% 95% at 72% 18%, #3c2b2c 0%, #2b201c 46%, #1f1712 100%);">
+  <div data-nav-sentinel style="position:absolute;top:0;left:0;width:1px;height:80vh;"></div>
+  <video aria-hidden="true" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" poster="uploads/photo-ready/usable-originals/lineup-all-flowers.png" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42;filter:saturate(1.08) contrast(1.05);">
+    <source src="uploads/photo-ready/videos/hero-bloom.mp4" type="video/mp4"/>
+  </video>
+  <div style="position:absolute;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle,#b76e74 0%,transparent 68%);top:6%;right:10%;filter:blur(18px);animation:floatGlow 9s ease-in-out infinite;"></div>
+  <div style="position:absolute;width:330px;height:330px;border-radius:50%;background:radial-gradient(circle,#c9a56f 0%,transparent 68%);top:38%;right:36%;filter:blur(22px);animation:floatGlow 11s ease-in-out infinite 1s;"></div>
+  <div style="position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,#7f9670 0%,transparent 68%);bottom:12%;right:22%;filter:blur(24px);animation:floatGlow 13s ease-in-out infinite .5s;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(20,15,12,.62) 0%, rgba(20,15,12,.12) 42%, rgba(20,15,12,.28) 100%);"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1;">
+    <img class="decor-gear decor-gear--hero-left" src="uploads/decorative-gear.svg" alt=""/>
+    <img class="decor-gear decor-gear--hero-left-fill" src="uploads/decorative-gear-filled.svg" alt=""/>
+    <img class="decor-gear decor-gear--hero-right-fill" src="uploads/decorative-gear-filled.svg" alt=""/>
+    <img class="decor-gear decor-gear--hero-right" src="uploads/decorative-gear.svg" alt=""/>
+  </div>
+  <!-- Asset note: hero uses the clean bloom MP4 loop; replace only if a higher-resolution final campaign video arrives. -->
+
+  <div style="position:relative;z-index:2;width:100%;max-width:1600px;margin:0 auto;padding:110px clamp(20px,5vw,40px) clamp(70px,11vh,120px);">
+    <div style="animation:fadeUp .9s both .02s;display:inline-flex;align-items:center;gap:8px;padding:7px 14px;margin-bottom:18px;border:1px solid rgba(231,196,192,.42);border-radius:100px;background:rgba(28,21,16,.4);backdrop-filter:blur(4px);font:700 10px/1 Inter,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#e7c4c0;"><span style="width:7px;height:7px;border-radius:50%;background:#c98288;box-shadow:0 0 0 4px rgba(201,130,136,.2);"></span>8 September 2026</div>
+    <h1 style="animation:fadeUp .9s both .15s;margin:0;max-width:15ch;font:700 clamp(44px,7.4vw,88px)/1.01 'Fixel Display',sans-serif;letter-spacing:-.015em;color:#f8f0e5;">Build your love story</h1>
+    <p style="animation:fadeUp .9s both .28s;margin:24px 0 0;max-width:50ch;font:400 clamp(16px,1.55vw,19px)/1.65 Inter,sans-serif;color:rgba(245,238,226,.82);">Wooden DIY flowers that bloom, glow, and hold a personal aroma &mdash; mechanical flower kits that turn feelings into meaningful gifts.</p>
+
+    <div style="animation:fadeUp .9s both .4s;margin-top:34px;max-width:540px;">
+      <sc-if value="{{ heroSuccess }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;align-items:center;gap:11px;padding:17px 19px;background:rgba(127,150,112,.2);border:1px solid rgba(127,150,112,.55);border-radius:10px;color:#ecf1e4;font:500 15px/1.45 Inter,sans-serif;">
+          <span class="circle-center" style="flex:none;width:22px;height:22px;border-radius:50%;background:#7f9670;color:#20180f;display:flex;align-items:center;justify-content:center;font-size:13px;"><span class="circle-center__text">&#10003;</span></span>
+          You&rsquo;re on the list &mdash; we&rsquo;ll email you the moment we launch.
+        </div>
+      </sc-if>
+      <sc-if value="{{ heroIdle }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ onHeroSubmit }}" noValidate style="display:flex;flex-direction:column;gap:8px;">
+          <div style="{{ heroEmailShellStyle }}">
+            <input type="email" name="email" autoComplete="email" placeholder="your@email.com" aria-label="Email address" style="{{ heroEmailInputStyle }}"/>
+            <button type="submit" aria-label="Get early access" style="{{ heroEmailButtonStyle }}" style-hover="background:#a05a60;transform:translateY(-1px);">
+              <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+                <svg aria-hidden="true" viewBox="0 0 24 24" style="width:22px;height:22px;display:block;overflow:visible;">
+                  <path d="M5 12h13M13 7l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </sc-if>
+              <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">Get early access</sc-if>
+            </button>
+          </div>
+          <p style="width:100%;margin:0;font:400 12.5px/1.4 Inter,sans-serif;color:rgba(245,238,226,.62);">Be the first to know. By subscribing you agree to our <a href="#footer" onClick="{{ goFooter }}" style="color:#e7c4c0;text-decoration:underline;">Privacy Policy</a>. No spam &mdash; unsubscribe anytime.</p>
+          <sc-if value="{{ heroError }}" hint-placeholder-val="{{ false }}">
+            <p style="width:100%;margin:0;font:600 12.5px/1.4 Inter,sans-serif;color:#f1bcbc;">{{ heroMsg }}</p>
+          </sc-if>
+        </form>
+      </sc-if>
+    </div>
+  </div>
+
+  <button onClick="{{ goProduct }}" aria-label="Scroll to learn more" style="position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:7px;background:none;border:none;color:rgba(245,238,226,.72);cursor:pointer;font:700 9.5px/1 Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;">
+    Discover more
+    <span style="animation:bob 1.8s ease-in-out infinite;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+  </button>
+</section>
+
+<section id="product" style="scroll-margin-top:100px;padding:clamp(76px,10vw,132px) clamp(20px,5vw,40px);background:#f7f1e7;">
+  <div style="max-width:1600px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(34px,5vw,76px);align-items:center;">
+      <div data-reveal>
+        <div style="font:800 11.5px/1 Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#b76e74;margin-bottom:18px;">The product</div>
+        <h2 style="margin:0;font:700 clamp(34px,4.6vw,58px)/1.04 'Fixel Display',sans-serif;letter-spacing:-.01em;color:#29231d;max-width:14ch;">Blooming flowers that last and bring joy</h2>
+        <p style="margin:24px 0 0;font:400 clamp(16px,1.45vw,18px)/1.75 Inter,sans-serif;color:#5c534a;max-width:52ch;">Inflorescence is a collection of mechanical flowers designed to help you express feelings through meaningful, symbolic gestures. Each piece is a DIY assembly kit &mdash; an object you build yourself, transforming time and care into something tangible.</p>
+        <p style="margin:16px 0 0;font:400 clamp(15px,1.4vw,17px)/1.75 Inter,sans-serif;color:#7d7264;max-width:52ch;">Once assembled, the flowers come to life. Buds gently open and close, subtle motion reveals the inner mechanics, and soft illumination brings the composition into focus. A removable detail lets you add a drop of perfume, while built-in lighting turns the flower into a delicate night lamp &mdash; casting soft, intricate shadows around the room.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:22px 26px;margin-top:32px;">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="flex:none;width:44px;height:44px;border-radius:50%;border:1px solid rgba(183,110,116,.45);display:flex;align-items:center;justify-content:center;color:#b76e74;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg></span>
+            <div><div style="font:700 14.5px/1.2 Inter,sans-serif;color:#29231d;">Bloom</div><div style="font:400 13px/1.4 Inter,sans-serif;color:#8a7d6b;margin-top:2px;">Dynamic blooming motion</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="flex:none;width:44px;height:44px;border-radius:50%;border:1px solid rgba(192,122,91,.5);display:flex;align-items:center;justify-content:center;color:#c07a5b;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><circle cx="12" cy="12" r="4.4"/><line x1="12" y1="2.6" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="21.4"/><line x1="2.6" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="21.4" y2="12"/><line x1="5" y1="5" x2="7.4" y2="7.4"/><line x1="16.6" y1="16.6" x2="19" y2="19"/><line x1="5" y1="19" x2="7.4" y2="16.6"/><line x1="16.6" y1="7.4" x2="19" y2="5"/></svg></span>
+            <div><div style="font:700 14.5px/1.2 Inter,sans-serif;color:#29231d;">Glow</div><div style="font:400 13px/1.4 Inter,sans-serif;color:#8a7d6b;margin-top:2px;">Cozy built-in night light</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="flex:none;width:44px;height:44px;border-radius:50%;border:1px solid rgba(127,150,112,.5);display:flex;align-items:center;justify-content:center;color:#5f7853;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"><path d="M12 3.4c0 0 5.4 5.9 5.4 9.9a5.4 5.4 0 0 1-10.8 0C6.6 9.3 12 3.4 12 3.4z"/></svg></span>
+            <div><div style="font:700 14.5px/1.2 Inter,sans-serif;color:#29231d;">Aroma</div><div style="font:400 13px/1.4 Inter,sans-serif;color:#8a7d6b;margin-top:2px;">Holds a signature scent</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="flex:none;width:44px;height:44px;border-radius:50%;border:1px solid rgba(138,125,107,.5);display:flex;align-items:center;justify-content:center;color:#8a7d6b;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><circle cx="12" cy="12" r="9"/><line x1="6" y1="6" x2="18" y2="18" strokeLinecap="round"/></svg></span>
+            <div><div style="font:700 14.5px/1.2 Inter,sans-serif;color:#29231d;">No glue</div><div style="font:400 13px/1.4 Inter,sans-serif;color:#8a7d6b;margin-top:2px;">No tools required</div></div>
+          </div>
+        </div>
+      </div>
+      <div data-reveal data-reveal-delay="120">
+        <!-- Asset note: product overview uses the clean tulip set loop; replace with a final assembled bouquet hero shot if a higher-quality campaign asset arrives. -->
+        <div style="position:relative;aspect-ratio:16/10;border-radius:14px;overflow:hidden;background:#fbf6ee;border:1px solid rgba(41,35,29,.12);display:flex;align-items:center;justify-content:center;box-shadow:0 24px 60px -28px rgba(41,35,29,.4);">
+          <video aria-label="Tulip model opening and closing" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" poster="uploads/photo-ready/usable-originals/set-tulip-motion.gif" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <source src="uploads/photo-ready/videos/product-tulip-set.mp4" type="video/mp4"/>
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <div data-reveal style="margin-top:clamp(46px,6vw,84px);">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:22px;">
+        <span style="font:italic 500 24px/1 'Fixel Display',sans-serif;color:#29231d;">See it from every angle</span>
+      </div>
+      <div style="{{ galleryGridStyle }}">
+        <sc-for list="{{ galleryImages }}" as="g" hint-placeholder-count="4">
+          <article aria-label="{{ g.label }}" style="{{ galleryItemStyle }}">
+            <div style="position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#fbf6ee;border:1px solid rgba(41,35,29,.1);transition:transform .3s ease,box-shadow .3s ease;" style-hover="transform:translateY(-4px);box-shadow:0 18px 40px -22px rgba(41,35,29,.5);">
+              <sc-if value="{{ g.isVideo }}" hint-placeholder-val="{{ true }}">
+                <video aria-label="{{ g.alt }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" style="width:100%;height:100%;object-fit:cover;display:block;">
+                  <source src="{{ g.src }}" type="video/mp4"/>
+                </video>
+              </sc-if>
+              <sc-if value="{{ g.isImage }}" hint-placeholder-val="{{ false }}">
+                <img src="{{ g.src }}" alt="{{ g.alt }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+              </sc-if>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+    <div data-reveal style="margin-top:clamp(44px,5vw,60px);display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;">
+      <button onClick="{{ goVip }}" style="display:inline-flex;align-items:center;gap:10px;padding:16px 28px;background:#b76e74;color:#fdf7ef;border:none;border-radius:100px;font:700 15px/1 Inter,sans-serif;letter-spacing:.01em;cursor:pointer;transition:background .2s,transform .2s;" style-hover="background:#a05a60;transform:translateY(-2px);">Reserve your spot for $1</button>
+      <span style="font:500 13.5px/1.5 Inter,sans-serif;color:#8a7d6b;">Reserve now and save up to 40%.</span>
+    </div>
+  </div>
+</section>
+
+<section id="collection" style="scroll-margin-top:100px;padding:clamp(76px,10vw,132px) clamp(20px,5vw,40px);background:#efe4d3;">
+  <div style="max-width:1600px;margin:0 auto;">
+    <div data-reveal style="max-width:760px;">
+      <div style="font:800 11.5px/1 Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7f9670;margin-bottom:18px;">Five stages of love</div>
+      <h2 style="margin:0;font:700 clamp(34px,4.6vw,58px)/1.04 'Fixel Display',sans-serif;letter-spacing:-.01em;color:#29231d;">Each flower carries its own meaning</h2>
+      <p style="margin:24px 0 0;font:400 clamp(16px,1.45vw,18px)/1.75 Inter,sans-serif;color:#5c534a;max-width:60ch;">Flowers have long been a universal symbol of emotion and connection. In our collection, each flower carries its own meaning, reflecting a different feeling, moment, or stage of love.</p>
+      <p style="margin:16px 0 0;font:400 clamp(15px,1.4vw,17px)/1.75 Inter,sans-serif;color:#7d7264;max-width:60ch;">Every relationship unfolds over time, growing through moments that shape how we feel, connect, and remember. That&rsquo;s why we&rsquo;ve defined five stages of love &mdash; each expressed through a flower. Choose the one that speaks to you, a few, or collect all five.</p>
+    </div>
+
+    <div data-reveal style="{{ flowerGridStyle }}">
+      <sc-for list="{{ flowerModels }}" as="f" hint-placeholder-count="5">
+        <article style="{{ flowerItemStyle }}" style-hover="transform:translateY(-5px);box-shadow:0 20px 44px -24px rgba(41,35,29,.45);">
+          <div style="aspect-ratio:4/3;border-radius:9px;overflow:hidden;background:#fbf6ee;border:1px solid rgba(41,35,29,.08);">
+            <img src="{{ f.src }}" alt="{{ f.alt }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-top:14px;gap:12px;">
+            <span style="flex:none;font:italic 500 22px/1 'Fixel Display',sans-serif;color:#29231d;">{{ f.name }}</span>
+            <span style="margin-left:auto;padding-top:3px;text-align:right;font:700 10.5px/1.3 Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7f9670;">{{ f.meaning }}</span>
+          </div>
+          <p style="margin:11px 0 0;font:400 13.5px/1.6 Inter,sans-serif;color:#7d7264;">{{ f.desc }}</p>
+        </article>
+      </sc-for>
+    </div>
+
+    <!-- Asset note: replace this collection banner with the final Kickstarter "stages of love" artwork when available. -->
+    <div data-reveal style="margin-top:18px;position:relative;aspect-ratio:1360/615;border-radius:14px;overflow:hidden;background:#fbf6ee;border:1px solid rgba(41,35,29,.08);">
+      <img src="uploads/photo-ready/usable-originals/lineup-all-flowers.png" alt="Five mechanical flowers in the Inflorescence collection" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+    </div>
+    <div data-reveal style="margin-top:clamp(40px,5vw,56px);display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;">
+      <button onClick="{{ goVip }}" style="display:inline-flex;align-items:center;gap:10px;padding:16px 28px;background:#b76e74;color:#fdf7ef;border:none;border-radius:100px;font:700 15px/1 Inter,sans-serif;letter-spacing:.01em;cursor:pointer;transition:background .2s,transform .2s;" style-hover="background:#a05a60;transform:translateY(-2px);">Reserve your spot for $1</button>
+      <span style="font:500 13.5px/1.5 Inter,sans-serif;color:#8a7d6b;">Super Early Bird pricing</span>
+    </div>
+  </div>
+</section>
+
+<section id="vip" style="scroll-margin-top:100px;position:relative;overflow:hidden;padding:clamp(76px,10vw,132px) clamp(20px,5vw,40px);background:radial-gradient(125% 80% at 82% 0%, #34271f 0%, #241d17 56%);color:#f4ede1;">
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1;">
+    <img class="decor-gear decor-gear--vip-top-left-fill" src="uploads/decorative-gear-filled.svg" alt=""/>
+    <img class="decor-gear decor-gear--vip-top-left" src="uploads/decorative-gear.svg" alt=""/>
+    <img class="decor-gear decor-gear--vip-top-right" src="uploads/decorative-gear.svg" alt=""/>
+    <img class="decor-gear decor-gear--vip-top-right-fill" src="uploads/decorative-gear-filled.svg" alt=""/>
+    <img class="decor-gear decor-gear--vip-bottom-left" src="uploads/decorative-gear.svg" alt=""/>
+    <img class="decor-gear decor-gear--vip-bottom-left-fill" src="uploads/decorative-gear-filled.svg" alt=""/>
+    <img class="decor-gear decor-gear--vip-bottom-right-fill" src="uploads/decorative-gear-filled.svg" alt=""/>
+    <img class="decor-gear decor-gear--vip-bottom-right" src="uploads/decorative-gear.svg" alt=""/>
+  </div>
+  <div style="position:relative;z-index:2;max-width:1600px;margin:0 auto;">
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,64px);align-items:flex-start;">
+      <div data-reveal style="flex:1 1 380px;min-width:min(100%,380px);">
+        <div style="font:800 11.5px/1 Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#e7c4c0;margin-bottom:18px;">VIP early access</div>
+        <h2 style="margin:0;font:700 clamp(36px,4.8vw,62px)/1.02 'Fixel Display',sans-serif;letter-spacing:-.01em;color:#f8f0e5;">Reserve your spot for $1 &mdash; <span style="color:#f0c9c4;">save up to 40%</span></h2>
+        <p style="margin:22px 0 0;font:400 clamp(16px,1.5vw,19px)/1.65 Inter,sans-serif;color:#e9ddcb;max-width:52ch;">Inflorescence is coming to Kickstarter, and we&rsquo;re reserving something special for the people who already understand why this matters. Booking your VIP spot unlocks our secret <em style="font-style:italic;color:#f0c9c4;">Super Early Bird</em> rewards.</p>
+        <ul style="list-style:none;margin:30px 0 0;padding:0;display:flex;flex-direction:column;gap:15px;">
+          <sc-for list="{{ vipBenefits }}" as="b" hint-placeholder-count="4">
+            <li style="display:flex;align-items:center;gap:13px;font:500 clamp(15px,1.4vw,17px)/1.4 Inter,sans-serif;color:#f2e8d8;">
+              <span style="flex:none;width:26px;height:26px;border-radius:50%;background:rgba(157,179,137,.22);border:1px solid rgba(157,179,137,.55);display:flex;align-items:center;justify-content:center;color:#b6cba1;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+              {{ b }}
+            </li>
+          </sc-for>
+        </ul>
+      </div>
+
+      <div data-reveal data-reveal-delay="140" style="flex:1 1 320px;min-width:min(100%,300px);background:rgba(247,241,231,.055);border:1px solid rgba(245,238,226,.16);border-radius:18px;padding:clamp(24px,3vw,34px);backdrop-filter:blur(2px);">
+        <div style="font:700 11px/1 Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#c9a56f;">Launches 8 September 2026</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px;">
+          <div style="text-align:center;background:rgba(20,15,11,.4);border-radius:11px;padding:14px 4px;"><div data-cd="days" style="font:500 clamp(28px,4vw,40px)/1 'Fixel Display',sans-serif;color:#f8f0e5;">25</div><div style="font:600 9.5px/1 Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#b0a493;margin-top:7px;">Days</div></div>
+          <div style="text-align:center;background:rgba(20,15,11,.4);border-radius:11px;padding:14px 4px;"><div data-cd="hours" style="font:500 clamp(28px,4vw,40px)/1 'Fixel Display',sans-serif;color:#f8f0e5;">00</div><div style="font:600 9.5px/1 Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#b0a493;margin-top:7px;">Hrs</div></div>
+          <div style="text-align:center;background:rgba(20,15,11,.4);border-radius:11px;padding:14px 4px;"><div data-cd="mins" style="font:500 clamp(28px,4vw,40px)/1 'Fixel Display',sans-serif;color:#f8f0e5;">00</div><div style="font:600 9.5px/1 Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#b0a493;margin-top:7px;">Min</div></div>
+          <div style="text-align:center;background:rgba(20,15,11,.4);border-radius:11px;padding:14px 4px;"><div data-cd="secs" style="font:500 clamp(28px,4vw,40px)/1 'Fixel Display',sans-serif;color:#f8f0e5;">00</div><div style="font:600 9.5px/1 Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#b0a493;margin-top:7px;">Sec</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;margin-top:18px;font:500 13px/1.4 Inter,sans-serif;color:#e9ddcb;">
+          <span style="flex:none;width:8px;height:8px;border-radius:50%;background:#c98288;box-shadow:0 0 0 4px rgba(201,130,136,.22);"></span>
+          Only <strong style="font-weight:800;color:#f0c9c4;">{{ spotsLeft }}</strong> Super Early Bird sets at this price
+        </div>
+        <button onClick="{{ goVip }}" style="width:100%;margin-top:22px;padding:18px;background:#c07a80;color:#fdf7ef;border:none;border-radius:11px;font:800 16px/1 Inter,sans-serif;letter-spacing:.01em;cursor:pointer;transition:background .2s;" style-hover="background:#a86169;">Reserve for $1</button>
+        <p style="margin:13px 0 0;font:400 11.5px/1.5 Inter,sans-serif;color:#b0a493;text-align:center;">A non-refundable $1 deposit that guarantees your lowest price and exclusive bonus &mdash; credited toward your Kickstarter pledge at launch.</p>
+      </div>
+    </div>
+
+    <div data-reveal style="margin-top:clamp(48px,6vw,80px);padding-top:clamp(36px,4vw,52px);border-top:1px solid rgba(245,238,226,.14);">
+      <div style="font:italic 500 clamp(22px,2.4vw,28px)/1 'Fixel Display',sans-serif;color:#f0c9c4;margin-bottom:26px;">How the $1 works</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:22px;">
+        <sc-for list="{{ vipSteps }}" as="s" hint-placeholder-count="4">
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <span class="circle-center circle-center--numeric" style="flex:none;width:38px;height:38px;border-radius:50%;border:1px solid rgba(201,165,111,.55);color:#c9a56f;display:flex;align-items:center;justify-content:center;font:700 17px/1 Inter,sans-serif;"><span class="circle-center__text">{{ s.n }}</span></span>
+            <p style="margin:0;padding-top:6px;font:500 14.5px/1.5 Inter,sans-serif;color:#e9ddcb;">{{ s.t }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div data-reveal style="margin-top:26px;background:rgba(247,241,231,.05);border:1px solid rgba(245,238,226,.14);border-radius:18px;padding:clamp(26px,3.4vw,40px);display:flex;flex-wrap:wrap;gap:clamp(26px,4vw,48px);align-items:center;">
+      <div style="flex:1 1 300px;min-width:min(100%,280px);">
+        <div style="font:800 11px/1 Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#c9a56f;margin-bottom:14px;">Inflorescence fidgets bonus</div>
+        <h3 style="margin:0;font:700 clamp(26px,3vw,36px)/1.1 'Fixel Display',sans-serif;color:#f8f0e5;">A little something before the flowers bloom</h3>
+        <p style="margin:16px 0 0;font:400 15px/1.65 Inter,sans-serif;color:#d8cbb8;max-width:46ch;">Only VIP backers receive an exclusive set of five mechanical fidgets inspired by the collection &mdash; miniature tulips, roses, lotuses, orchids and magnolias. Cute, playful, and satisfying to fidget with. Our way of saying thank you.</p>
+      </div>
+      <div style="flex:1 1 320px;min-width:min(100%,280px);">
+        <!-- Asset note: replace with the final VIP fidgets full-set photo when supplied. Current image keeps the block visual without showing production notes. -->
+        <div style="aspect-ratio:1360/615;border-radius:12px;overflow:hidden;background:#201812;border:1px solid rgba(245,238,226,.14);transition:transform .3s;" style-hover="transform:translateY(-4px);">
+          <img src="uploads/photo-ready/usable-originals/lineup-all-flowers.png" alt="Ugears mechanical flower collection" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process" style="scroll-margin-top:100px;padding:clamp(76px,10vw,132px) clamp(20px,5vw,40px);background:#f7f1e7;">
+  <div style="max-width:1600px;margin:0 auto;">
+    <div data-reveal style="max-width:680px;">
+      <div style="font:800 11.5px/1 Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#c07a5b;margin-bottom:18px;">How it works &middot; choose &middot; build &middot; gift &middot; delight</div>
+      <h2 style="margin:0;font:700 clamp(34px,4.6vw,58px)/1.04 'Fixel Display',sans-serif;letter-spacing:-.01em;color:#29231d;">From flat-pack to bloom in an afternoon</h2>
+    </div>
+    <div data-reveal style="margin-top:clamp(40px,5vw,60px);display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;">
+      <sc-for list="{{ assemblySteps }}" as="s" hint-placeholder-count="4">
+        <div style="background:#fbf6ee;border:1px solid rgba(41,35,29,.08);border-radius:15px;padding:16px 16px 22px;">
+          <div style="aspect-ratio:5/4;border-radius:10px;overflow:hidden;background:#fbf6ee;border:1px solid rgba(41,35,29,.08);margin-bottom:16px;">
+            <sc-if value="{{ s.isVideo }}" hint-placeholder-val="{{ false }}">
+              <video aria-label="{{ s.alt }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" style="width:100%;height:100%;object-fit:cover;display:block;">
+                <source src="{{ s.src }}" type="video/mp4"/>
+              </video>
+            </sc-if>
+            <sc-if value="{{ s.isImage }}" hint-placeholder-val="{{ true }}">
+              <img src="{{ s.src }}" alt="{{ s.alt }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+            </sc-if>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:9px;">
+            <span style="font:500 20px/1 'Fixel Display',sans-serif;color:#c07a5b;">{{ s.n }}</span>
+            <span style="font:700 17px/1.2 Inter,sans-serif;color:#29231d;">{{ s.t }}</span>
+          </div>
+          <p style="margin:10px 0 0;font:400 14px/1.6 Inter,sans-serif;color:#7d7264;">{{ s.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <div data-reveal style="margin-top:clamp(40px,5vw,56px);display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;">
+      <button onClick="{{ goVip }}" style="display:inline-flex;align-items:center;gap:10px;padding:16px 28px;background:#b76e74;color:#fdf7ef;border:none;border-radius:100px;font:700 15px/1 Inter,sans-serif;letter-spacing:.01em;cursor:pointer;transition:background .2s,transform .2s;" style-hover="background:#a05a60;transform:translateY(-2px);">Reserve your spot for $1</button>
+      <span style="font:500 13.5px/1.5 Inter,sans-serif;color:#8a7d6b;">No glue, no tools and 40% off</span>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" style="scroll-margin-top:100px;padding:clamp(76px,10vw,132px) clamp(20px,5vw,40px);background:#efe4d3;">
+  <div style="max-width:1600px;margin:0 auto;">
+    <div data-reveal style="text-align:center;max-width:680px;margin:0 auto;">
+      <div style="font:800 11.5px/1 Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7f9670;margin-bottom:18px;">Loved worldwide</div>
+      <h2 style="margin:0;font:700 clamp(34px,4.6vw,58px)/1.04 'Fixel Display',sans-serif;letter-spacing:-.01em;color:#29231d;">Trusted by backers across the globe</h2>
+    </div>
+
+    <div data-reveal style="margin-top:clamp(40px,5vw,60px);display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;">
+      <sc-for list="{{ stats }}" as="s" hint-placeholder-count="3">
+        <div style="text-align:center;padding:28px 16px;background:#fbf6ee;border:1px solid rgba(41,35,29,.08);border-radius:16px;">
+          <div style="font:500 clamp(40px,5vw,60px)/1 'Fixel Display',sans-serif;color:#b76e74;letter-spacing:-.01em;">{{ s.prefix }}<span data-countup="{{ s.v }}">0</span>{{ s.suffix }}</div>
+          <div style="margin-top:12px;font:500 14px/1.45 Inter,sans-serif;color:#7d7264;">{{ s.label }}</div>
+        </div>
+      </sc-for>
+      <div style="text-align:center;padding:28px 16px;background:#fbf6ee;border:1px solid rgba(41,35,29,.08);border-radius:16px;">
+        <div style="font:500 clamp(40px,5vw,60px)/1 'Fixel Display',sans-serif;color:#b76e74;letter-spacing:-.01em;font-variant-numeric:lining-nums;font-feature-settings:'lnum' 1;">8 Sep</div>
+        <div style="margin-top:12px;font:500 14px/1.45 Inter,sans-serif;color:#7d7264;">Kickstarter launch date &middot; 2026</div>
+      </div>
+    </div>
+
+    <p data-reveal style="margin:clamp(36px,4vw,52px) auto 0;max-width:64ch;text-align:center;font:400 clamp(16px,1.5vw,19px)/1.75 Inter,sans-serif;color:#5c534a;">The support of our community is what makes projects like this possible. Inflorescence carries the same attention to detail you&rsquo;ve come to expect from us &mdash; but this time it&rsquo;s shaped by something a little closer to the heart. We&rsquo;re proud to invite you to become part of this new chapter.</p>
+
+    <div data-reveal style="margin-top:clamp(40px,5vw,58px);">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:20px;">
+        <span style="font:italic 500 24px/1 'Fixel Display',sans-serif;color:#29231d;">In their words</span>
+      </div>
+      <!-- TODO: replace these temporary review quotes with real Kickstarter reviews when they are available. -->
+      <div style="{{ reviewsGridStyle }}">
+        <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="3">
+          <figure style="margin:0;background:#fbf6ee;border:1px solid rgba(41,35,29,.08);border-radius:16px;padding:26px;display:flex;flex-direction:column;gap:16px;">
+            <div style="color:#d99a3f;font-size:15px;letter-spacing:2px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <blockquote style="margin:0;font:400 16px/1.6 Inter,sans-serif;color:#4a4239;">&ldquo;{{ t.quote }}&rdquo;</blockquote>
+            <figcaption style="display:flex;align-items:center;gap:12px;margin-top:auto;">
+              <span class="circle-center" style="flex:none;width:40px;height:40px;border-radius:50%;background:#e7c4c0;color:#8a4f54;display:flex;align-items:center;justify-content:center;font:700 12px/1 Inter,sans-serif;"><span class="circle-center__text">{{ t.init }}</span></span>
+              <span><span style="display:block;font:700 14px/1.2 Inter,sans-serif;color:#29231d;">{{ t.name }}</span><span style="display:block;font:400 12.5px/1.2 Inter,sans-serif;color:#8a7d6b;margin-top:2px;">{{ t.country }}</span></span>
+            </figcaption>
+          </figure>
+        </sc-for>
+      </div>
+    </div>
+
+    <div data-reveal style="margin-top:clamp(44px,5vw,60px);text-align:center;">
+      <button onClick="{{ goVip }}" style="display:inline-flex;align-items:center;gap:10px;padding:16px 28px;background:#b76e74;color:#fdf7ef;border:none;border-radius:100px;font:700 15px/1 Inter,sans-serif;letter-spacing:.01em;cursor:pointer;transition:background .2s,transform .2s;" style-hover="background:#a05a60;transform:translateY(-2px);">Reserve your spot for $1</button>
+      <p style="margin:14px 0 0;font:500 13.5px/1.5 Inter,sans-serif;color:#8a7d6b;">Join 14,000+ backers and lock in your VIP</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="scroll-margin-top:100px;padding:clamp(76px,10vw,132px) clamp(20px,5vw,40px);background:#f7f1e7;">
+  <div style="max-width:820px;margin:0 auto;">
+    <div data-reveal style="text-align:center;margin-bottom:clamp(28px,4vw,44px);">
+      <div style="font:800 11.5px/1 Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#b76e74;margin-bottom:18px;">Good to know</div>
+      <h2 style="margin:0;font:700 clamp(34px,4.6vw,58px)/1.04 'Fixel Display',sans-serif;letter-spacing:-.01em;color:#29231d;">Questions, answered</h2>
+    </div>
+    <div data-reveal style="border-bottom:1px solid rgba(41,35,29,.14);">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="7">
+        <div style="border-top:1px solid rgba(41,35,29,.14);">
+          <button onClick="{{ f.onClick }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:24px 4px;background:none;border:none;cursor:pointer;text-align:left;">
+            <span style="font:500 clamp(19px,2vw,23px)/1.3 'Fixel Display',sans-serif;color:#29231d;">{{ f.q }}</span>
+            <span style="{{ f.iconStyle }}" aria-hidden="true">
+              <span style="{{ f.iconLineHorizontal }}"></span>
+              <span style="{{ f.iconLineVertical }}"></span>
+            </span>
+          </button>
+          <div style="{{ f.panelStyle }}">
+            <div style="min-height:0;overflow:hidden;">
+              <div style="padding:0 4px 26px;max-width:70ch;font:400 15.5px/1.7 Inter,sans-serif;color:#5c534a;">{{ f.a }}</div>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="footer" style="scroll-margin-top:100px;background:#2b332a;color:#eef0e8;position:relative;overflow:hidden;">
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;overflow:hidden;">
+    <img class="footer-gear footer-gear--top-left-fill" src="uploads/decorative-gear-filled.svg" alt=""/>
+    <img class="footer-gear footer-gear--top-left" src="uploads/decorative-gear.svg" alt=""/>
+    <img class="footer-gear footer-gear--top-right" src="uploads/decorative-gear.svg" alt=""/>
+    <img class="footer-gear footer-gear--top-right-fill" src="uploads/decorative-gear-filled.svg" alt=""/>
+    <img class="footer-gear footer-gear--left" src="uploads/decorative-gear.svg" alt=""/>
+    <img class="footer-gear footer-gear--left-fill" src="uploads/decorative-gear-filled.svg" alt=""/>
+    <img class="footer-gear footer-gear--right-fill" src="uploads/decorative-gear-filled.svg" alt=""/>
+    <img class="footer-gear footer-gear--right" src="uploads/decorative-gear.svg" alt=""/>
+    <img class="footer-gear footer-gear--small" src="uploads/decorative-gear.svg" alt=""/>
+  </div>
+  <div style="position:relative;z-index:1;padding:clamp(70px,9vw,110px) clamp(20px,5vw,40px) clamp(48px,6vw,72px);max-width:1600px;margin:0 auto;">
+    <div data-reveal style="text-align:center;max-width:600px;margin:0 auto;">
+      <h2 style="margin:0;font:700 clamp(38px,5.4vw,68px)/1.02 'Fixel Display',sans-serif;letter-spacing:-.015em;color:#f6f4ea;">Don&rsquo;t miss the bloom</h2>
+      <p style="margin:18px 0 0;font:400 clamp(15px,1.4vw,17px)/1.6 Inter,sans-serif;color:#c3ccbb;">Reserve your VIP spot for $1 before Kickstarter opens on 8 September 2026 &mdash; lock in your lowest price and unlock exclusive Super Early Bird rewards.</p>
+
+      <div style="margin-top:32px;display:flex;flex-direction:column;align-items:center;gap:16px;">
+        <button onClick="{{ goVip }}" style="display:inline-flex;align-items:center;gap:10px;padding:18px 34px;background:#c07a80;color:#fdf7ef;border:none;border-radius:100px;font:800 16px/1 Inter,sans-serif;letter-spacing:.01em;cursor:pointer;transition:background .2s,transform .2s;" style-hover="background:#a86169;transform:translateY(-2px);">Reserve your spot for $1</button>
+        <p style="margin:0;font:400 12.5px/1.5 Inter,sans-serif;color:#9aa891;max-width:46ch;">Non-refundable $1 deposit &mdash; credited toward your Kickstarter pledge at launch.</p>
+        <a href="https://www.kickstarter.com" target="_blank" rel="noopener" style="font:600 14px/1 Inter,sans-serif;color:#c3ccbb;text-decoration:underline;text-underline-offset:3px;">Follow us on Kickstarter &rarr;</a>
+      </div>
+    </div>
+
+    <div data-reveal style="margin-top:clamp(48px,6vw,72px);padding-top:32px;border-top:1px solid rgba(238,240,232,.14);display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:center;">
+        <img src="uploads/ugears-wordmark-light.svg" alt="Ugears" style="height:30px;width:auto;display:block;"/>
+      </div>
+      <div style="display:flex;gap:10px;">
+        <a href="https://www.instagram.com/ugears" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram" style="width:40px;height:40px;border-radius:50%;background:#eef0e8;border:1px solid #eef0e8;display:flex;align-items:center;justify-content:center;color:#2b332a;transition:background .2s,color .2s,border-color .2s,transform .2s;" style-hover="background:#c07a80;color:#fdf7ef;border-color:#c07a80;transform:translateY(-2px);">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="3.8"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.facebook.com/ukrainiangears" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook" style="width:40px;height:40px;border-radius:50%;background:#eef0e8;border:1px solid #eef0e8;display:flex;align-items:center;justify-content:center;color:#2b332a;transition:background .2s,color .2s,border-color .2s,transform .2s;" style-hover="background:#c07a80;color:#fdf7ef;border-color:#c07a80;transform:translateY(-2px);">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.4h2.5l.37-2.9h-2.87V8.86c0-.84.23-1.41 1.43-1.41h1.53V4.86c-.27-.04-1.18-.12-2.24-.12-2.22 0-3.74 1.36-3.74 3.85v2.15H8v2.9h2.48V21h3.02z"/></svg>
+        </a>
+        <a href="https://www.pinterest.com/ugearsmodels" target="_blank" rel="noopener" aria-label="Pinterest" title="Pinterest" style="width:40px;height:40px;border-radius:50%;background:#eef0e8;border:1px solid #eef0e8;display:flex;align-items:center;justify-content:center;color:#2b332a;transition:background .2s,color .2s,border-color .2s,transform .2s;" style-hover="background:#c07a80;color:#fdf7ef;border-color:#c07a80;transform:translateY(-2px);">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.4C6.9 2.4 4 5.7 4 9.3c0 1.7 1 3.8 2.5 4.5.3.13.44 0 .5-.2.04-.15.16-.66.22-.86.06-.2.03-.28-.12-.46-.46-.55-.75-1.32-.75-2.2 0-2.9 2.2-5.5 5.7-5.5 3.1 0 4.8 1.9 4.8 4.4 0 3.3-1.46 6.1-3.6 6.1-1.2 0-2.05-1-1.77-2.2.34-1.45 1-3 1-4 0-.93-.5-1.7-1.53-1.7-1.2 0-2.2 1.25-2.2 2.94 0 1.07.36 1.8.36 1.8s-1.2 5.24-1.43 6.16c-.24 1-.04 2.36 0 2.5 2.94-.44 5.36-2.6 6.4-5.26.13.1 1.05.72 2.4.72 3.15 0 5.3-2.87 5.3-6.72 0-2.9-2.46-5.72-6.18-5.72z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/channel/UCkxhRc5Nd2oB9PNqaIBGhGA" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube" style="width:40px;height:40px;border-radius:50%;background:#eef0e8;border:1px solid #eef0e8;display:flex;align-items:center;justify-content:center;color:#2b332a;transition:background .2s,color .2s,border-color .2s,transform .2s;" style-hover="background:#c07a80;color:#fdf7ef;border-color:#c07a80;transform:translateY(-2px);">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.76-1.77C19.28 5.1 12 5.1 12 5.1s-7.28 0-8.84.43A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.76 1.77C4.72 18.9 12 18.9 12 18.9s7.28 0 8.84-.43a2.5 2.5 0 0 0 1.76-1.77C23 15.2 23 12 23 12zM9.8 15.3V8.7l6 3.3-6 3.3z"/></svg>
+        </a>
+        <a href="https://twitter.com/UGEARS_models" target="_blank" rel="noopener" aria-label="X" title="X" style="width:40px;height:40px;border-radius:50%;background:#eef0e8;border:1px solid #eef0e8;display:flex;align-items:center;justify-content:center;color:#2b332a;transition:background .2s,color .2s,border-color .2s,transform .2s;" style-hover="background:#c07a80;color:#fdf7ef;border-color:#c07a80;transform:translateY(-2px);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.53 3h3.02l-6.6 7.54L21.75 21h-6.09l-4.77-6.23L5.42 21H2.4l7.06-8.07L2.25 3h6.24l4.31 5.7L17.53 3zm-1.06 16.2h1.67L7.6 4.7H5.8l10.67 14.5z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;justify-content:space-between;font:400 12.5px/1.6 Inter,sans-serif;color:#9aa891;">
+      <div style="display:flex;flex-wrap:wrap;gap:8px 18px;">
+        <span>&copy; 2026 Ugears &middot; Inflorescence</span>
+        <a href="#" style="color:#9aa891;text-decoration:underline;text-underline-offset:2px;">Privacy Policy</a>
+        <a href="#" style="color:#9aa891;text-decoration:underline;text-underline-offset:2px;">Terms</a>
+        <a href="#" style="color:#9aa891;text-decoration:underline;text-underline-offset:2px;">Cookie settings</a>
+      </div>
+      <span style="font:italic 500 15px/1 'Fixel Display',sans-serif;color:#c3ccbb;">Ugears &mdash; Modeling joy.</span>
+    </div>
+  </div>
+</section>
+
+<!--SECTIONS-->
+
+<sc-if value="{{ cookieShown }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:16px;right:16px;bottom:16px;z-index:900;max-width:580px;margin:0 auto;background:#29231d;color:#efe4d3;border-radius:14px;padding:17px 20px;display:flex;flex-wrap:wrap;gap:13px;align-items:center;justify-content:space-between;box-shadow:0 16px 46px rgba(0,0,0,.3);">
+    <p style="margin:0;font:400 13px/1.55 Inter,sans-serif;flex:1;min-width:210px;">We use cookies to improve your experience and measure our campaign. See our <a href="#footer" onClick="{{ goFooter }}" style="color:#e7c4c0;text-decoration:underline;">Privacy Policy</a>.</p>
+    <div style="display:flex;gap:9px;">
+      <button onClick="{{ declineCookies }}" style="padding:11px 16px;background:none;border:1px solid rgba(239,228,211,.35);border-radius:8px;color:#efe4d3;font:600 13px/1 Inter,sans-serif;cursor:pointer;">Decline</button>
+      <button onClick="{{ acceptCookies }}" style="padding:11px 18px;background:#b76e74;border:none;border-radius:8px;color:#fdf7ef;font:700 13px/1 Inter,sans-serif;cursor:pointer;">Accept</button>
+    </div>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;launchDate&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;2026-09-08&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Campaign&quot;},&quot;spotsLeft&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:187,&quot;min&quot;:0,&quot;max&quot;:2000,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Campaign&quot;},&quot;showCookieBanner&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behavior&quot;}}">
+class Component extends DCLogic {
+  state = {
+    isMobile: false,
+    narrow: false,
+    mobileOpen: false,
+    faqOpen: 0,
+    heroForm: { status: 'idle', msg: '' },
+    footerForm: { status: 'idle', msg: '' },
+    cookie: 'pending',
+  };
+
+  setRoot = (el) => { this.root = el; };
+  setNav = (el) => { this.navEl = el; };
+  setAnn = (el) => { this.annEl = el; };
+
+  componentDidMount() {
+    this.onResize();
+    window.addEventListener('resize', this.onResize, { passive: true });
+    this._reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+    try {
+      const c = localStorage.getItem('infl_cookie_consent');
+      this.setState({ cookie: c ? 'hidden' : 'shown' });
+    } catch (e) { this.setState({ cookie: 'shown' }); }
+
+    try {
+      const em = localStorage.getItem('infl_lead_email');
+      if (em) this.setState({ heroForm: { status: 'success', msg: '' }, footerForm: { status: 'success', msg: '' } });
+    } catch (e) {}
+
+    this.tick();
+    this._cd = setInterval(() => this.tick(), 1000);
+
+    this._lastY = window.pageYOffset || 0;
+    this._onScroll = () => {
+      this.updateHeader();
+      if (this._st) return;
+      this._st = setTimeout(() => { this._st = 0; this.checkReveals(); }, 60);
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+
+    this.measureAnn();
+    this._t0 = setTimeout(() => this.measureAnn(), 300);
+    requestAnimationFrame(() => this.measureAnn());
+    this._onLoad = () => this.measureAnn();
+    window.addEventListener('load', this._onLoad);
+    if (window.ResizeObserver && this.annEl) {
+      this._annRO = new ResizeObserver(() => this.measureAnn());
+      this._annRO.observe(this.annEl);
+    }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => this.measureAnn()).catch(() => {});
+    this.scan();
+    document.documentElement.classList.add('reveal-active');
+    this._revealRaf = requestAnimationFrame(() => this.checkReveals());
+    this.updateHeader();
+    requestAnimationFrame(() => this.playAmbientVideos());
+    this._t1 = setTimeout(() => this.checkReveals(), 400);
+    this._t2 = setTimeout(() => this.checkReveals(), 1200);
+    this._t3 = setTimeout(() => this.playAmbientVideos(), 500);
+  }
+
+  componentDidUpdate() {
+    this.scan();
+    this.checkReveals();
+    this.playAmbientVideos();
+    this.syncMobileMenuTop();
+    this.syncMobileScrollLock();
+    this.updateHeader();
+  }
+
+  componentWillUnmount() {
+    clearInterval(this._cd);
+    clearTimeout(this._t0);
+    clearTimeout(this._t1);
+    clearTimeout(this._t2);
+    clearTimeout(this._t3);
+    if (this._hraf) cancelAnimationFrame(this._hraf);
+    if (this._revealRaf) cancelAnimationFrame(this._revealRaf);
+    if (this._annRO) this._annRO.disconnect();
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this._onScroll);
+    if (this._onLoad) window.removeEventListener('load', this._onLoad);
+    this.syncMobileScrollLock(true);
+  }
+
+  measureAnn() {
+    if (!this.annEl) return;
+    const h = this.annEl.offsetHeight || 0;
+    if (h <= 0) return; // not painted yet (fonts still loading) вЂ” keep template default
+    this._annH = h;
+    if (this.navEl) this.navEl.style.top = h + 'px';
+    this.syncMobileMenuTop();
+  }
+
+  syncMobileMenuTop() {
+    if (!this.root) return;
+    const annH = this._annH || 0;
+    const navH = this.navEl ? (this.navEl.offsetHeight || 56) : 56;
+    this.root.style.setProperty('--mobile-menu-backdrop-top', (annH + navH) + 'px');
+    this.root.style.setProperty('--mobile-menu-panel-top', (annH + navH + 8) + 'px');
+  }
+
+  preventMobilePageScroll = (event) => {
+    if (this.state.mobileOpen && this.state.isMobile && event && event.preventDefault) {
+      event.preventDefault();
+    }
+  };
+
+  preventMobileScrollKey = (event) => {
+    if (!(this.state.mobileOpen && this.state.isMobile)) return;
+    const lockedKeys = [' ', 'PageDown', 'PageUp', 'End', 'Home', 'ArrowDown', 'ArrowUp'];
+    if (lockedKeys.includes(event.key) && event.preventDefault) event.preventDefault();
+  };
+
+  setMobileScrollGuards(enabled) {
+    if (enabled && !this._mobileScrollGuardsOn) {
+      document.addEventListener('wheel', this.preventMobilePageScroll, { passive: false });
+      document.addEventListener('touchmove', this.preventMobilePageScroll, { passive: false });
+      document.addEventListener('keydown', this.preventMobileScrollKey);
+      this._mobileScrollGuardsOn = true;
+    } else if (!enabled && this._mobileScrollGuardsOn) {
+      document.removeEventListener('wheel', this.preventMobilePageScroll);
+      document.removeEventListener('touchmove', this.preventMobilePageScroll);
+      document.removeEventListener('keydown', this.preventMobileScrollKey);
+      this._mobileScrollGuardsOn = false;
+    }
+  }
+
+  syncMobileScrollLock(forceUnlock) {
+    const shouldLock = !forceUnlock && !!(this.state.mobileOpen && this.state.isMobile);
+    const html = document.documentElement;
+    const body = document.body;
+    if (!html || !body) return;
+    if (shouldLock === !!this._mobileScrollLocked) {
+      body.classList.toggle('mobile-menu-open', shouldLock);
+      this.setMobileScrollGuards(shouldLock);
+      return;
+    }
+    if (shouldLock) {
+      const scrollY = Math.max(0, window.pageYOffset || html.scrollTop || body.scrollTop || 0);
+      this._scrollLockStyles = {
+        htmlOverflow: html.style.overflow,
+        htmlOverscroll: html.style.overscrollBehavior,
+        htmlScrollBehavior: html.style.scrollBehavior,
+        bodyOverflow: body.style.overflow,
+        bodyPosition: body.style.position,
+        bodyTop: body.style.top,
+        bodyLeft: body.style.left,
+        bodyRight: body.style.right,
+        bodyWidth: body.style.width,
+        bodyTouchAction: body.style.touchAction,
+        bodyOverscroll: body.style.overscrollBehavior,
+      };
+      this._lockedScrollY = scrollY;
+      body.classList.add('mobile-menu-open');
+      html.style.overscrollBehavior = 'none';
+      html.style.scrollBehavior = 'auto';
+      body.style.touchAction = 'none';
+      body.style.overscrollBehavior = 'none';
+      this.setMobileScrollGuards(true);
+    } else {
+      const prev = this._scrollLockStyles || {};
+      const scrollY = this._lockedScrollY || 0;
+      const prevScrollBehavior = prev.htmlScrollBehavior || '';
+      this.setMobileScrollGuards(false);
+      html.style.overflow = prev.htmlOverflow || '';
+      html.style.overscrollBehavior = prev.htmlOverscroll || '';
+      html.style.scrollBehavior = 'auto';
+      body.style.overflow = prev.bodyOverflow || '';
+      body.style.position = prev.bodyPosition || '';
+      body.style.top = prev.bodyTop || '';
+      body.style.left = prev.bodyLeft || '';
+      body.style.right = prev.bodyRight || '';
+      body.style.width = prev.bodyWidth || '';
+      body.style.touchAction = prev.bodyTouchAction || '';
+      body.style.overscrollBehavior = prev.bodyOverscroll || '';
+      body.classList.remove('mobile-menu-open');
+      this._scrollLockStyles = null;
+      this._lockedScrollY = null;
+      if (!forceUnlock) {
+        window.scrollTo(0, scrollY);
+        this._lastY = scrollY;
+        requestAnimationFrame(() => { html.style.scrollBehavior = prevScrollBehavior; });
+      } else {
+        html.style.scrollBehavior = prevScrollBehavior;
+      }
+    }
+    this._mobileScrollLocked = shouldLock;
+  }
+
+  // Announcement bar stays put; the nav hides on scroll-down and reveals on scroll-up.
+  updateHeader = () => {
+    const nav = this.navEl;
+    if (!nav) return;
+    const y = window.pageYOffset || 0;
+    const annH = this._annH || 0;
+    const delta = y - (this._lastY || 0);
+    const mobileMenuActive = this.state.mobileOpen && this.state.isMobile;
+    let hidden = this._navHidden || false;
+    if (y <= annH + 4) hidden = false;
+    else if (mobileMenuActive) hidden = false;
+    else if (delta > 4) hidden = true;
+    else if (delta < -4) hidden = false;
+    this._navHidden = hidden;
+    const transparent = !mobileMenuActive && y <= annH + 8;
+    nav.style.transform = hidden ? 'translateY(-100%)' : 'translateY(0)';
+    nav.style.background = transparent ? 'transparent' : 'rgba(247,241,231,.86)';
+    nav.style.backdropFilter = transparent ? 'none' : 'blur(14px)';
+    nav.style.webkitBackdropFilter = transparent ? 'none' : 'blur(14px)';
+    nav.style.borderBottomColor = transparent ? 'rgba(248,240,229,0)' : 'rgba(41,35,29,.08)';
+    nav.style.setProperty('--nav-ink', transparent ? '#f8f0e5' : '#4a4239');
+    nav.style.setProperty('--nav-logo-filter', transparent ? 'brightness(0) invert(1)' : 'none');
+    nav.style.setProperty('--nav-menu-line', transparent ? '#f8f0e5' : '#29231d');
+    nav.style.boxShadow = (!hidden && !transparent) ? '0 6px 26px rgba(41,35,29,.1)' : 'none';
+    this._lastY = y;
+  };
+
+  onResize = () => {
+    const w = window.innerWidth;
+    const m = w < 900;
+    const n = w < 720;
+    if (m !== this.state.isMobile || n !== this.state.narrow) this.setState({ isMobile: m, narrow: n });
+    this.measureAnn();
+  };
+
+  scan() {
+    const root = this.root;
+    if (!root) return;
+    if (!this._revEls) this._revEls = [];
+    root.querySelectorAll('[data-reveal]').forEach((el) => {
+      if (el.__rev) return;
+      el.__rev = true;
+      if (this._reduce) {
+        el.setAttribute('data-reveal-state', 'visible');
+        this.fireCount(el);
+        return;
+      }
+      const d = parseFloat(el.getAttribute('data-reveal-delay') || '0');
+      el.style.transitionDelay = d + 'ms';
+      el.setAttribute('data-reveal-state', 'hidden');
+      el.__shown = false;
+      this._revEls.push(el);
+    });
+  }
+
+  // Re-triggers every time an element enters the viewport (animates again on each scroll-in).
+  checkReveals() {
+    if (this._reduce || !this._revEls || !this._revEls.length) return;
+    const vh = window.innerHeight || 800;
+    this._revEls.forEach((el) => {
+      const r = el.getBoundingClientRect();
+      if (!el.__shown && r.top < vh * 0.88 && r.bottom > vh * 0.04) {
+        el.__shown = true;
+        el.setAttribute('data-reveal-state', 'visible');
+        this.fireCount(el);
+      } else if (el.__shown && (r.top > vh || r.bottom < 0)) {
+        el.__shown = false;
+        el.setAttribute('data-reveal-state', 'hidden');
+      }
+    });
+  }
+
+  fireCount(el) {
+    if (el.hasAttribute && el.hasAttribute('data-countup')) this.countUp(el);
+    if (el.querySelectorAll) el.querySelectorAll('[data-countup]').forEach((c) => this.countUp(c));
+  }
+
+  playAmbientVideos() {
+    const root = this.root;
+    if (!root) return;
+    root.querySelectorAll('video').forEach((video) => {
+      video.muted = true;
+      video.loop = true;
+      video.playsInline = true;
+      if (this._reduce && !video.controls) {
+        try { video.pause(); } catch (e) {}
+        return;
+      }
+      if (video.paused) {
+        const p = video.play();
+        if (p && p.catch) p.catch(() => {});
+      }
+    });
+  }
+
+  revealAll() {
+    if (!this._revEls) return;
+    this._revEls.forEach((el) => { el.setAttribute('data-reveal-state', 'visible'); el.__shown = true; });
+    const root = this.root;
+    if (root) root.querySelectorAll('[data-countup]').forEach((c) => this.countUp(c));
+  }
+
+  countUp(el) {
+    if (el.__cu) return; el.__cu = true;
+    const target = parseFloat(el.getAttribute('data-countup')) || 0;
+    const fmt = (n) => Math.round(n).toLocaleString('en-US');
+    if (this._reduce) { el.textContent = fmt(target); return; }
+    const dur = 1500; const start = Date.now();
+    const timer = setInterval(() => {
+      const t = Math.min(1, (Date.now() - start) / dur);
+      const e = 1 - Math.pow(1 - t, 3);
+      el.textContent = fmt(target * e);
+      if (t >= 1) { el.textContent = fmt(target); clearInterval(timer); }
+    }, 33);
+  }
+
+  tick() {
+    const root = this.root; if (!root) return;
+    let target;
+    const ld = this.props.launchDate;
+    if (ld) { const p = new Date(ld); if (!isNaN(p.getTime())) target = p.getTime(); }
+    if (!target) target = Date.UTC(2026, 8, 8, 0, 0, 0);
+    let diff = Math.max(0, target - Date.now());
+    const day = Math.floor(diff / 86400000); diff -= day * 86400000;
+    const hr = Math.floor(diff / 3600000); diff -= hr * 3600000;
+    const mn = Math.floor(diff / 60000); diff -= mn * 60000;
+    const sc = Math.floor(diff / 1000);
+    const set = (k, v) => { const el = root.querySelector('[data-cd="' + k + '"]'); if (el) el.textContent = String(v).padStart(2, '0'); };
+    set('days', day); set('hours', hr); set('mins', mn); set('secs', sc);
+  }
+
+  toggleMobile = () => { this.setState((s) => ({ mobileOpen: !s.mobileOpen })); };
+  toggleFaq(i) { this.setState((s) => ({ faqOpen: s.faqOpen === i ? -1 : i })); }
+
+  submit(which, e) {
+    e.preventDefault();
+    const form = e.target;
+    const input = form.querySelector('input[type=email]');
+    const val = ((input && input.value) || '').trim();
+    const ok = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(val);
+    const key = which === 'hero' ? 'heroForm' : 'footerForm';
+    if (!ok) { this.setState({ [key]: { status: 'error', msg: 'Please enter a valid email address.' } }); return; }
+    try { localStorage.setItem('infl_lead_email', val); } catch (err) {}
+    this.setState({ [key]: { status: 'success', msg: '' } });
+  }
+
+  setCookie(v) { try { localStorage.setItem('infl_cookie_consent', v); } catch (e) {} this.setState({ cookie: 'hidden' }); }
+
+  scrollTo(sel, e) {
+    if (e && e.preventDefault) e.preventDefault();
+    const runScroll = () => {
+      const el = this.root && this.root.querySelector(sel);
+      if (!el) return;
+      const nav = this.navEl;
+      const off = (this._annH || 0) + (nav ? nav.offsetHeight : 46) + 14;
+      const y = Math.max(0, el.getBoundingClientRect().top + window.pageYOffset - off);
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    };
+    if (this.state.mobileOpen) {
+      this.setState({ mobileOpen: false });
+      requestAnimationFrame(() => requestAnimationFrame(runScroll));
+      return;
+    }
+    runScroll();
+  }
+
+  renderVals() {
+    const st = this.state;
+
+    // Responsive: below 720px these card grids become horizontal swipe sliders.
+    const narrow = st.narrow;
+    const slider = 'display:flex;gap:14px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scroll-padding-left:20px;margin-left:-20px;margin-right:-20px;padding:4px 20px 16px;';
+    const galleryGridStyle = narrow ? slider : 'display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;';
+    const galleryItemStyle = (narrow ? 'flex:0 0 82%;max-width:330px;scroll-snap-align:start;' : '') + 'padding:0;border:none;background:none;';
+    const flowerGridStyle = 'margin-top:clamp(40px,5vw,60px);' + (narrow ? slider : 'display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;align-items:stretch;');
+    const flowerItemStyle = (narrow ? 'flex:0 0 80%;max-width:300px;scroll-snap-align:start;' : '') + 'display:flex;flex-direction:column;text-align:left;background:#fbf6ee;border:1px solid rgba(41,35,29,.09);border-radius:14px;padding:14px;transition:transform .3s ease,box-shadow .3s ease;';
+    const reviewsGridStyle = narrow ? 'display:flex;flex-direction:column;gap:16px;' : 'display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;';
+    const reviewItemStyle = 'margin:0;background:#fbf6ee;border:1px solid rgba(41,35,29,.08);border-radius:16px;padding:clamp(22px,6vw,26px);display:flex;flex-direction:column;gap:16px;';
+    const swipeHintStyle = narrow ? 'display:flex;align-items:center;gap:7px;margin:0 0 13px;font:700 10px/1 Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#b09a91;' : 'display:none;';
+    const heroEmailShellStyle = 'display:flex;align-items:center;gap:6px;width:100%;max-width:540px;padding:5px;background:rgba(248,242,232,.96);border:1px solid rgba(245,238,226,.42);border-radius:999px;box-shadow:0 18px 42px rgba(18,12,8,.2);';
+    const heroEmailInputStyle = 'flex:1;min-width:0;padding:' + (st.isMobile ? '14px 10px 14px 17px' : '15px 14px 15px 18px') + ';border:none;background:transparent;font:400 15px/1 Inter,sans-serif;color:#29231d;outline:none;';
+    const heroEmailButtonStyle = st.isMobile
+      ? 'flex:none;width:46px;height:46px;display:flex;align-items:center;justify-content:center;padding:0;background:#b76e74;color:#fdf7ef;border:none;border-radius:50%;font:800 22px/1 Inter,sans-serif;cursor:pointer;transition:background .2s,transform .2s;'
+      : 'flex:none;min-width:156px;padding:15px 24px;background:#b76e74;color:#fdf7ef;border:none;border-radius:999px;font:800 14px/1 Inter,sans-serif;letter-spacing:.01em;cursor:pointer;transition:background .2s,transform .2s;';
+    const mobileMenuOpen = !!st.mobileOpen;
+    const mobileBurgerButtonStyle = 'position:relative;flex:none;width:42px;height:42px;border-radius:50%;border:1px solid rgba(248,240,229,.28);background:rgba(28,21,16,.18);display:flex;align-items:center;justify-content:center;padding:0;cursor:pointer;transition:background .24s ease,border-color .24s ease;';
+    const mobileBurgerLineBase = 'position:absolute;left:50%;top:50%;width:20px;height:2px;background:var(--nav-menu-line);border-radius:999px;transition:transform .32s cubic-bezier(.2,.7,.2,1),opacity .22s ease,background .28s ease;';
+    const mobileBurgerLineTopStyle = mobileBurgerLineBase + 'transform:' + (mobileMenuOpen ? 'translate(-50%,-50%) rotate(45deg)' : 'translate(-50%,-50%) translateY(-6px)') + ';';
+    const mobileBurgerLineMiddleStyle = mobileBurgerLineBase + 'transform:translate(-50%,-50%);opacity:' + (mobileMenuOpen ? '0' : '1') + ';';
+    const mobileBurgerLineBottomStyle = mobileBurgerLineBase + 'transform:' + (mobileMenuOpen ? 'translate(-50%,-50%) rotate(-45deg)' : 'translate(-50%,-50%) translateY(6px)') + ';';
+    const mobileNavCtaStyle = 'flex:none;width:42px;height:42px;border-radius:50%;border:none;background:#b76e74;color:#fff7f0;display:flex;align-items:center;justify-content:center;font:900 13px/1 Inter,sans-serif;letter-spacing:-.01em;cursor:pointer;box-shadow:0 10px 24px rgba(183,110,116,.28);transition:background .22s ease,transform .22s ease;';
+    const mobileMenuBackdropStyle = 'position:fixed;left:0;right:0;top:var(--mobile-menu-backdrop-top,88px);bottom:0;z-index:780;background:rgba(29,22,17,.12);backdrop-filter:blur(8px) saturate(1.06);-webkit-backdrop-filter:blur(8px) saturate(1.06);opacity:' + (mobileMenuOpen ? '1' : '0') + ';pointer-events:' + (mobileMenuOpen ? 'auto' : 'none') + ';visibility:' + (mobileMenuOpen ? 'visible' : 'hidden') + ';transition:opacity .24s ease,visibility .24s linear;';
+    const mobileMenuPanelStyle = 'position:fixed;left:clamp(12px,4vw,20px);right:clamp(12px,4vw,20px);top:var(--mobile-menu-panel-top,96px);z-index:790;display:flex;flex-direction:column;gap:2px;max-height:' + (mobileMenuOpen ? '430px' : '0') + ';overflow:hidden;padding:' + (mobileMenuOpen ? '10px' : '0 10px') + ';background:rgba(247,241,231,.58);border:1px solid rgba(247,241,231,.46);border-radius:16px;box-shadow:0 18px 42px rgba(41,35,29,.16);backdrop-filter:blur(18px) saturate(1.12);-webkit-backdrop-filter:blur(18px) saturate(1.12);opacity:' + (mobileMenuOpen ? '1' : '0') + ';transform:' + (mobileMenuOpen ? 'translateY(0) scale(1)' : 'translateY(-8px) scale(.98)') + ';transform-origin:top center;pointer-events:' + (mobileMenuOpen ? 'auto' : 'none') + ';visibility:' + (mobileMenuOpen ? 'visible' : 'hidden') + ';transition:max-height .34s cubic-bezier(.2,.7,.2,1),opacity .24s ease,transform .32s cubic-bezier(.2,.7,.2,1),padding .28s ease,visibility .24s linear;';
+    const mobileMenuLinkStyle = 'display:flex;align-items:center;justify-content:flex-start;gap:12px;padding:14px 14px;border-radius:10px;color:#29231d;font:800 15px/1.1 Inter,sans-serif;letter-spacing:.01em;transition:background .18s ease,color .18s ease;';
+    const mobileMenuLabel = mobileMenuOpen ? 'Close menu' : 'Open menu';
+
+    const navLinks = [
+      { t: 'The flowers', href: '#product' },
+      { t: 'Five stages', href: '#collection' },
+      { t: 'VIP $1', href: '#vip' },
+      { t: 'How it works', href: '#process' },
+      { t: 'Reviews', href: '#reviews' },
+      { t: 'FAQ', href: '#faq' },
+    ].map((l) => ({ ...l, onClick: (e) => this.scrollTo(l.href, e) }));
+
+    const mediaLogos = ['Forbes', 'TechCrunch', 'Dezeen', 'Yanko Design', 'Gizmodo', 'The Verge'];
+
+    const withMediaFlags = (item) => ({ ...item, isVideo: item.mediaType === 'video', isImage: item.mediaType !== 'video' });
+
+    const galleryImages = [
+      { label: 'Assembled bloom', mediaType: 'image', src: 'uploads/photo-ready/gallery-stills/assembled-bloom.jpg', alt: 'Assembled mechanical tulip model in bloom' },
+      { label: 'Parts kit', mediaType: 'image', src: 'uploads/photo-ready/gallery-stills/parts-kit.jpg', alt: 'Inflorescence parts kit and assembled tulip model' },
+      { label: 'Petal material', mediaType: 'image', src: 'uploads/photo-ready/gallery-stills/petal-material.jpg', alt: 'Close-up of flexible flower petal material' },
+      { label: 'Mechanics detail', mediaType: 'image', src: 'uploads/photo-ready/gallery-stills/mechanics-detail.jpg', alt: 'Close-up of the mechanical flower base and internal details' },
+    ].map(withMediaFlags);
+
+    const flowerAssetByName = {
+      Tulip: 'uploads/photo-ready/meaning/tulip.png',
+      Rose: 'uploads/photo-ready/meaning/rose.png',
+      Lotus: 'uploads/photo-ready/meaning/lotus.png',
+      Orchid: 'uploads/photo-ready/meaning/orchid.png',
+      Magnolia: 'uploads/photo-ready/meaning/magnolia.png',
+    };
+    const flowerModels = [
+      ['01', 'Tulip', 'Budding feelings', 'The beginning', 'The Tulip is where every story begins. Delicate yet full of promise, it captures the quiet moment when something new takes root.'],
+      ['02', 'Rose', 'Passion in bloom', 'The declaration', 'The Rose is the moment when feelings become undeniable \u2014 a bloom that embodies the fire of emotion and the energy of connection.'],
+      ['03', 'Lotus', 'Steady ground', 'Support and calm', 'The Lotus is a symbol of inner strength. In moments of uncertainty, it becomes a reminder: you have someone to lean on.'],
+      ['04', 'Orchid', 'Unique bond', 'Rare admiration', 'The Orchid celebrates finding someone truly your own \u2014 noticing the little things that make them irreplaceable.'],
+      ['05', 'Magnolia', 'Shared belonging', 'Belonging', 'The Magnolia expresses everything that has been built over time \u2014 the feeling of being home in the presence of someone special.'],
+    ].map(([n, name, meaning, stage, desc]) => {
+      const src = flowerAssetByName[name];
+      const item = { label: name + ' \u2014 ' + meaning, src, alt: name + ' flower for the ' + meaning + ' stage' };
+      return { n, name, meaning, stage, desc, src, alt: item.alt };
+    });
+
+    const vipBenefits = [
+      'Secret Super Early Bird rewards',
+      'Save up to 40% off future retail prices',
+      'VIP-only mechanical fidget set bonus',
+      'Private community access',
+    ];
+    const vipSteps = [
+      { n: '1', t: 'Reserve your VIP spot for just $1' },
+      { n: '2', t: 'Receive your private Kickstarter launch link' },
+      { n: '3', t: 'Choose your flower and save up to 40% with Super Early Bird pricing' },
+      { n: '4', t: 'Receive exclusive bonus fidgets with your pledge' },
+    ];
+    const fidgets = [['Tulip'], ['Rose'], ['Lotus'], ['Orchid'], ['Magnolia']]
+      .map(([name]) => ({ name, src: flowerAssetByName[name] || 'uploads/photo-ready/usable-originals/lineup-all-flowers.png', alt: name + ' flower detail' }));
+
+    // Asset note: process cards use clean ready assets until final step-by-step campaign photography is supplied.
+    const assemblySteps = [
+      { n: '01', t: 'Choose', d: 'Think about what you want to say \u2014 gratitude, devotion, encouragement, desire, or simply, \u201cI\u2019m here.\u201d', mediaType: 'image', src: 'uploads/photo-ready/usable-originals/lineup-all-flowers.png', alt: 'Complete Inflorescence flower collection' },
+      { n: '02', t: 'Build', d: 'Build with confidence: everything you need, including step-by-step instructions, is in the box. No glue or special tools required.', mediaType: 'image', src: 'uploads/photo-ready/usable-originals/assembly-kit-and-tulip.png', alt: 'Hands holding the Inflorescence assembly kit parts' },
+      { n: '03', t: 'Gift', d: 'Present the flower to your loved one and share a moment of joy, surprise, and connection together.', mediaType: 'image', src: 'uploads/photo-ready/lifestyle-gift-couple.jpg', alt: 'Couple sharing a bouquet of pink tulips at home' },
+      { n: '04', t: 'Delight', d: 'Fill her everyday life with warmth, beauty, soft light, and a personal scent \u2014 a gift she\u2019ll cherish for years.', mediaType: 'video', src: 'uploads/photo-ready/videos/night-light-glow.mp4', poster: 'uploads/photo-ready/usable-originals/led-glow.gif', alt: 'Mechanical flower glowing as a warm night light' },
+    ].map(withMediaFlags);
+
+    const stats = [
+      { v: 6, prefix: '', suffix: '', label: 'Kickstarter campaigns since 2014' },
+      { v: 1342840, prefix: '$', suffix: '', label: 'pledged by our community' },
+      { v: 14286, prefix: '', suffix: '', label: 'backers around the world' },
+    ];
+
+    const testimonials = [
+      { init: 'S\u00b7M', name: 'Sarah M.', country: 'United States', quote: 'The build was the best part \u2014 three hours I completely lost track of. It sits on my desk and everyone asks about it.' },
+      { init: 'J\u00b7K', name: 'Jonas K.', country: 'Germany', quote: 'Beautiful engineering. Pieces click together perfectly, no glue, no frustration. Already eyeing my next kit.' },
+      { init: 'A\u00b7L', name: 'Am\u00e9lie L.', country: 'France', quote: 'I gave one to my partner and we built it together. It has become our little ritual. Genuinely moving.' },
+    ];
+
+    const ugcTiles = Array.from({ length: 8 }).map((_, i) => ({ i }));
+
+    const faqBase = [
+      { q: 'How do you make sure the secret pledge is reserved for me?', a: 'We send your private Kickstarter link to the email address you use for your VIP reservation. To access the secret pledge, simply log in to Kickstarter using that same email address.' },
+      { q: 'When will I receive my flowers?', a: 'We plan to start shipping Kickstarter rewards in November 2026. Most backers should receive their flowers by the end of December 2026.' },
+      { q: 'Which countries do you ship to? How much is shipping?', a: 'We ship worldwide. Estimated shipping starts from: Europe $9.90, United Kingdom $15, United States $15, Canada $29, and the rest of the world $39.90 (final rates depend on your destination and selected reward). Customs fees may apply depending on your country\u2019s regulations and are the responsibility of the backer.' },
+      { q: 'Is the Super Early Bird price guaranteed?', a: 'Your VIP status gives you access to a secret Super Early Bird pledge available throughout the Kickstarter campaign. However, the number of rewards at this price is limited, so we recommend claiming yours as early as possible.' },
+      { q: 'Can I receive the bonus fidgets without backing a flower?', a: 'No. Bonus fidgets are available only when you back one of the eligible flower pledges during the Kickstarter campaign.' },
+      { q: 'Will the 40% discount be available without the $1 VIP reservation?', a: 'No. The exclusive Super Early Bird price is available only to VIP supporters who reserved their spot with the $1 VIP reservation \u2014 it will not be visible to other Kickstarter visitors.' },
+      { q: 'Is my $1 VIP reservation refundable?', a: 'No. The $1 VIP reservation is non-refundable and secures your access to exclusive Kickstarter offers.' },
+    ];
+    const faqs = faqBase.map((f, i) => {
+      const open = st.faqOpen === i;
+      return {
+        ...f,
+        open,
+        onClick: () => this.toggleFaq(i),
+        panelStyle: 'display:grid;grid-template-rows:' + (open ? '1fr' : '0fr') + ';opacity:' + (open ? '1' : '0') + ';overflow:hidden;transition:grid-template-rows .42s cubic-bezier(.25,.8,.3,1),opacity .3s ease;',
+        iconStyle: 'position:relative;flex:none;width:28px;height:28px;display:block;color:#b76e74;transition:transform .38s cubic-bezier(.25,.8,.3,1);transform-origin:50% 50%;transform:' + (open ? 'rotate(45deg)' : 'rotate(0deg)') + ';',
+        iconLineHorizontal: 'position:absolute;left:50%;top:50%;width:18px;height:2px;background:currentColor;border-radius:999px;transform:translate(-50%,-50%);',
+        iconLineVertical: 'position:absolute;left:50%;top:50%;width:2px;height:18px;background:currentColor;border-radius:999px;transform:translate(-50%,-50%);',
+      };
+    });
+
+    const socials = [['Ig', 'Instagram'], ['Fb', 'Facebook'], ['Pt', 'Pinterest'], ['Yt', 'YouTube'], ['X', 'X / Twitter']]
+      .map(([ab, name]) => ({ ab, name }));
+
+    return {
+      setRoot: this.setRoot,
+      setNav: this.setNav,
+      setAnn: this.setAnn,
+      navLinks,
+      desktop: !st.isMobile,
+      isMobile: st.isMobile,
+      mobileOpen: st.mobileOpen,
+      mobileMenuClosed: !st.mobileOpen,
+      mobileMenuLabel,
+      mobileBurgerButtonStyle,
+      mobileBurgerLineTopStyle,
+      mobileBurgerLineMiddleStyle,
+      mobileBurgerLineBottomStyle,
+      mobileNavCtaStyle,
+      mobileMenuBackdropStyle,
+      mobileMenuPanelStyle,
+      mobileMenuLinkStyle,
+      toggleMobile: this.toggleMobile,
+      goTop: (e) => this.scrollTo('#top', e),
+      goProduct: (e) => this.scrollTo('#product', e),
+      goVip: (e) => this.scrollTo('#vip', e),
+      goFooter: (e) => this.scrollTo('#footer', e),
+
+      onHeroSubmit: (e) => this.submit('hero', e),
+      heroSuccess: st.heroForm.status === 'success',
+      heroIdle: st.heroForm.status !== 'success',
+      heroError: st.heroForm.status === 'error',
+      heroMsg: st.heroForm.msg,
+      heroEmailShellStyle,
+      heroEmailInputStyle,
+      heroEmailButtonStyle,
+      onFooterSubmit: (e) => this.submit('footer', e),
+      footerSuccess: st.footerForm.status === 'success',
+      footerIdle: st.footerForm.status !== 'success',
+      footerError: st.footerForm.status === 'error',
+      footerMsg: st.footerForm.msg,
+
+      galleryGridStyle, galleryItemStyle, flowerGridStyle, flowerItemStyle, reviewsGridStyle, reviewItemStyle, swipeHintStyle,
+      mediaLogos, galleryImages, flowerModels, vipBenefits, vipSteps, fidgets,
+      assemblySteps, stats, testimonials, ugcTiles, faqs, socials,
+      spotsLeft: (this.props.spotsLeft != null ? this.props.spotsLeft : 187),
+
+      cookieShown: st.cookie === 'shown' && this.props.showCookieBanner !== false,
+      acceptCookies: () => this.setCookie('accepted'),
+      declineCookies: () => this.setCookie('declined'),
+    };
+  }
+}
+</script>
+</body>
+</html>
+

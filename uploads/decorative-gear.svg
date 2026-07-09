@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="Decorative gear">
+  <g fill="none" stroke="#eef0e8" stroke-width="26" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M400 137 316 87 238 116 220 204 183 222 115 234 86 315 138 384 138 416 86 485 115 566 183 578 220 596 238 684 316 713 400 655 421 655 484 713 562 684 580 596 617 578 685 566 714 485 662 416 662 384 714 315 685 234 617 222 580 204 562 116 484 87 421 137 400 137Z"/>
+    <circle cx="400" cy="400" r="150"/>
+  </g>
+</svg>
