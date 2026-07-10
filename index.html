@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inflorescence: UGEARS Mechanical Flowers</title>
+<meta name="description" content="Mechanical flowers that turn feelings into meaningful gifts. 3D model kits.">
 <link rel="icon" type="image/svg+xml" href="uploads/ugears-wordmark-dark.svg">
 <script>
 document.documentElement.classList.add('reveal-js');
@@ -41,6 +43,11 @@ button{color:inherit}
 .circle-center{display:inline-grid!important;place-items:center!important;text-align:center;line-height:1!important}
 .circle-center__text{display:block;line-height:1;transform:translateY(.02em)}
 .circle-center--numeric .circle-center__text{font-family:Inter,system-ui,sans-serif;font-variant-numeric:tabular-nums;font-feature-settings:'tnum' 1,'lnum' 1;letter-spacing:0}
+.ks-logo{display:block;width:auto;flex:none}
+.ks-logo--word{height:13px}
+.ks-logo--word-small{height:11px}
+.ks-logo--k{height:18px}
+.ks-logo--k-large{height:20px}
 .footer-gear{position:absolute;display:block;height:auto;pointer-events:none;user-select:none;will-change:transform}
 .footer-gear--left{width:clamp(260px,31vw,500px);left:clamp(-210px,-9vw,-104px);bottom:clamp(-224px,-12vw,-124px);opacity:.085;animation:gearTurn 50s linear infinite;animation-delay:-18s}
 .footer-gear--left-fill{width:clamp(150px,17vw,285px);left:clamp(145px,11vw,230px);bottom:clamp(-154px,-7vw,-82px);opacity:.038;animation:gearTurnReverse 67s linear infinite;animation-delay:-41s}
@@ -73,8 +80,8 @@ html.reveal-js [data-reveal][data-reveal-state="visible"]{opacity:1;transform:tr
 </helmet>
 <div ref="{{ setRoot }}" style="overflow-x:hidden;">
 
-<a ref="{{ setAnn }}" href="#vip" onClick="{{ goVip }}" style="position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:center;gap:9px;padding:11px clamp(16px,5vw,40px);background:#b76e74;color:#fff7f0;font:700 12.5px/1.35 Inter,sans-serif;letter-spacing:.01em;text-align:center;cursor:pointer;transition:background .25s ease;" style-hover="background:#a86169;">
-  <span>Reserve your VIP spot for <strong style="font-weight:900;color:#ffffff;">$1</strong> and save up to 40%</span>
+<a ref="{{ setAnn }}" href="#plan" onClick="{{ goPlan }}" style="position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:center;gap:9px;padding:11px clamp(16px,5vw,40px);background:#b76e74;color:#fff7f0;font:700 12.5px/1.35 Inter,sans-serif;letter-spacing:.01em;text-align:center;cursor:pointer;transition:background .25s ease;" style-hover="background:#a86169;">
+  <span style="display:inline-flex;align-items:center;gap:8px;"><img class="ks-logo ks-logo--k" src="uploads/kickstarter-k-green.png" alt="" aria-hidden="true"/>Unlock Secret Rewards and save up to 40%</span>
 </a>
 
 <nav ref="{{ setNav }}" style="--nav-ink:#f8f0e5;--nav-logo-filter:brightness(0) invert(1);--nav-menu-line:#f8f0e5;position:fixed;top:40px;left:0;right:0;z-index:800;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:13px clamp(18px,5vw,40px);background:transparent;backdrop-filter:none;border-bottom:1px solid rgba(248,240,229,0);transition:transform .4s cubic-bezier(.22,.61,.36,1),box-shadow .4s ease,background .28s ease,border-color .28s ease,backdrop-filter .28s ease;">
@@ -84,8 +91,8 @@ html.reveal-js [data-reveal][data-reveal-state="visible"]{opacity:1;transform:tr
         <img src="uploads/ugears-wordmark-dark.svg" alt="Ugears" style="height:22px;width:auto;display:block;filter:var(--nav-logo-filter);transition:filter .28s ease;"/>
       </a>
       <div style="display:flex;align-items:center;gap:clamp(14px,2vw,28px);">
-        <sc-for list="{{ navLinks }}" as="l" hint-placeholder-count="6"><a href="{{ l.href }}" onClick="{{ l.onClick }}" style="font:600 13px/1 Inter,sans-serif;color:var(--nav-ink);letter-spacing:.01em;transition:color .2s;" style-hover="color:#f0c9c4;">{{ l.t }}</a></sc-for>
-        <button onClick="{{ goVip }}" style="padding:10px 18px;background:#b76e74;color:#fdf7ef;border:none;border-radius:100px;font:700 13px/1 Inter,sans-serif;letter-spacing:.01em;cursor:pointer;transition:background .2s;" style-hover="background:#a05a60;">Reserve for $1</button>
+        <sc-for list="{{ navLinks }}" as="l" hint-placeholder-count="7"><a href="{{ l.href }}" onClick="{{ l.onClick }}" style="font:600 13px/1 Inter,sans-serif;color:var(--nav-ink);letter-spacing:.01em;transition:color .2s;" style-hover="color:#f0c9c4;">{{ l.t }}</a></sc-for>
+        <button onClick="{{ goPlan }}" style="padding:10px 18px;background:#b76e74;color:#fdf7ef;border:none;border-radius:100px;font:700 13px/1 Inter,sans-serif;letter-spacing:.01em;cursor:pointer;transition:background .2s;" style-hover="background:#a05a60;">Unlock for $1</button>
       </div>
     </div>
   </sc-if>
@@ -99,7 +106,7 @@ html.reveal-js [data-reveal][data-reveal-state="visible"]{opacity:1;transform:tr
       <a href="#top" onClick="{{ goTop }}" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;" aria-label="Ugears">
         <img src="uploads/ugears-wordmark-dark.svg" alt="Ugears" style="height:22px;width:auto;display:block;filter:var(--nav-logo-filter);transition:filter .28s ease;"/>
       </a>
-      <button class="circle-center circle-center--numeric" onClick="{{ goVip }}" aria-label="Reserve VIP spot for 1 dollar" style="{{ mobileNavCtaStyle }}"><span class="circle-center__text">1$</span></button>
+      <button class="circle-center circle-center--numeric" onClick="{{ goPlan }}" aria-label="Unlock VIP access for 1 dollar" style="{{ mobileNavCtaStyle }}"><span class="circle-center__text">$1</span></button>
     </div>
   </sc-if>
 </nav>
@@ -107,7 +114,7 @@ html.reveal-js [data-reveal][data-reveal-state="visible"]{opacity:1;transform:tr
 <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
   <div data-mobile-menu-backdrop onClick="{{ toggleMobile }}" style="{{ mobileMenuBackdropStyle }}" aria-hidden="{{ mobileMenuClosed }}"></div>
   <div data-mobile-menu style="{{ mobileMenuPanelStyle }}" aria-hidden="{{ mobileMenuClosed }}">
-    <sc-for list="{{ navLinks }}" as="l" hint-placeholder-count="6">
+    <sc-for list="{{ navLinks }}" as="l" hint-placeholder-count="7">
       <a href="{{ l.href }}" onClick="{{ l.onClick }}" style="{{ mobileMenuLinkStyle }}">{{ l.t }}</a>
     </sc-for>
   </div>
@@ -131,36 +138,12 @@ html.reveal-js [data-reveal][data-reveal-state="visible"]{opacity:1;transform:tr
   <!-- Asset note: hero uses the clean bloom MP4 loop; replace only if a higher-resolution final campaign video arrives. -->
 
   <div style="position:relative;z-index:2;width:100%;max-width:1600px;margin:0 auto;padding:110px clamp(20px,5vw,40px) clamp(70px,11vh,120px);">
-    <div style="animation:fadeUp .9s both .02s;display:inline-flex;align-items:center;gap:8px;padding:7px 14px;margin-bottom:18px;border:1px solid rgba(231,196,192,.42);border-radius:100px;background:rgba(28,21,16,.4);backdrop-filter:blur(4px);font:700 10px/1 Inter,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#e7c4c0;"><span style="width:7px;height:7px;border-radius:50%;background:#c98288;box-shadow:0 0 0 4px rgba(201,130,136,.2);"></span>8 September 2026</div>
-    <h1 style="animation:fadeUp .9s both .15s;margin:0;max-width:15ch;font:700 clamp(44px,7.4vw,88px)/1.01 'Fixel Display',sans-serif;letter-spacing:-.015em;color:#f8f0e5;">Build your love story</h1>
-    <p style="animation:fadeUp .9s both .28s;margin:24px 0 0;max-width:50ch;font:400 clamp(16px,1.55vw,19px)/1.65 Inter,sans-serif;color:rgba(245,238,226,.82);">Wooden DIY flowers that bloom, glow, and hold a personal aroma &mdash; mechanical flower kits that turn feelings into meaningful gifts.</p>
+    <div style="animation:fadeUp .9s both .02s;display:inline-flex;align-items:center;gap:9px;padding:7px 14px;margin-bottom:18px;border:1px solid rgba(231,196,192,.42);border-radius:100px;background:rgba(28,21,16,.4);backdrop-filter:blur(4px);font:700 10px/1 Inter,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#e7c4c0;"><img class="ks-logo ks-logo--word" src="uploads/kickstarter-wordmark-green.png" alt="Kickstarter"/><span>8 September 2026</span></div>
+    <h1 style="animation:fadeUp .9s both .15s;margin:0;max-width:16ch;font:700 clamp(42px,6.6vw,82px)/1.02 'Fixel Display',sans-serif;letter-spacing:-.015em;color:#f8f0e5;">Inflorescence: UGEARS Mechanical Flowers</h1>
+    <p style="animation:fadeUp .9s both .28s;margin:24px 0 0;max-width:50ch;font:400 clamp(16px,1.55vw,19px)/1.65 Inter,sans-serif;color:rgba(245,238,226,.82);">Mechanical flowers that turn feelings into meaningful gifts. 3D model kits.</p>
 
     <div style="animation:fadeUp .9s both .4s;margin-top:34px;max-width:540px;">
-      <sc-if value="{{ heroSuccess }}" hint-placeholder-val="{{ false }}">
-        <div style="display:flex;align-items:center;gap:11px;padding:17px 19px;background:rgba(127,150,112,.2);border:1px solid rgba(127,150,112,.55);border-radius:10px;color:#ecf1e4;font:500 15px/1.45 Inter,sans-serif;">
-          <span class="circle-center" style="flex:none;width:22px;height:22px;border-radius:50%;background:#7f9670;color:#20180f;display:flex;align-items:center;justify-content:center;font-size:13px;"><span class="circle-center__text">&#10003;</span></span>
-          You&rsquo;re on the list &mdash; we&rsquo;ll email you the moment we launch.
-        </div>
-      </sc-if>
-      <sc-if value="{{ heroIdle }}" hint-placeholder-val="{{ true }}">
-        <form onSubmit="{{ onHeroSubmit }}" noValidate style="display:flex;flex-direction:column;gap:8px;">
-          <div style="{{ heroEmailShellStyle }}">
-            <input type="email" name="email" autoComplete="email" placeholder="your@email.com" aria-label="Email address" style="{{ heroEmailInputStyle }}"/>
-            <button type="submit" aria-label="Get early access" style="{{ heroEmailButtonStyle }}" style-hover="background:#a05a60;transform:translateY(-1px);">
-              <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
-                <svg aria-hidden="true" viewBox="0 0 24 24" style="width:22px;height:22px;display:block;overflow:visible;">
-                  <path d="M5 12h13M13 7l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </sc-if>
-              <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">Get early access</sc-if>
-            </button>
-          </div>
-          <p style="width:100%;margin:0;font:400 12.5px/1.4 Inter,sans-serif;color:rgba(245,238,226,.62);">Be the first to know. By subscribing you agree to our <a href="#footer" onClick="{{ goFooter }}" style="color:#e7c4c0;text-decoration:underline;">Privacy Policy</a>. No spam &mdash; unsubscribe anytime.</p>
-          <sc-if value="{{ heroError }}" hint-placeholder-val="{{ false }}">
-            <p style="width:100%;margin:0;font:600 12.5px/1.4 Inter,sans-serif;color:#f1bcbc;">{{ heroMsg }}</p>
-          </sc-if>
-        </form>
-      </sc-if>
+      <button onClick="{{ goPlan }}" style="display:inline-flex;align-items:center;gap:10px;padding:17px 28px;background:#b76e74;color:#fdf7ef;border:none;border-radius:100px;font:800 15px/1 Inter,sans-serif;letter-spacing:.01em;cursor:pointer;transition:background .2s,transform .2s;box-shadow:0 18px 42px rgba(18,12,8,.22);" style-hover="background:#a05a60;transform:translateY(-2px);">Notify me on launch</button>
     </div>
   </div>
 
@@ -176,26 +159,8 @@ html.reveal-js [data-reveal][data-reveal-state="visible"]{opacity:1;transform:tr
       <div data-reveal>
         <div style="font:800 11.5px/1 Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#b76e74;margin-bottom:18px;">The product</div>
         <h2 style="margin:0;font:700 clamp(34px,4.6vw,58px)/1.04 'Fixel Display',sans-serif;letter-spacing:-.01em;color:#29231d;max-width:14ch;">Blooming flowers that last and bring joy</h2>
-        <p style="margin:24px 0 0;font:400 clamp(16px,1.45vw,18px)/1.75 Inter,sans-serif;color:#5c534a;max-width:52ch;">Inflorescence is a collection of mechanical flowers designed to help you express feelings through meaningful, symbolic gestures. Each piece is a DIY assembly kit &mdash; an object you build yourself, transforming time and care into something tangible.</p>
-        <p style="margin:16px 0 0;font:400 clamp(15px,1.4vw,17px)/1.75 Inter,sans-serif;color:#7d7264;max-width:52ch;">Once assembled, the flowers come to life. Buds gently open and close, subtle motion reveals the inner mechanics, and soft illumination brings the composition into focus. A removable detail lets you add a drop of perfume, while built-in lighting turns the flower into a delicate night lamp &mdash; casting soft, intricate shadows around the room.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:22px 26px;margin-top:32px;">
-          <div style="display:flex;align-items:center;gap:12px;">
-            <span style="flex:none;width:44px;height:44px;border-radius:50%;border:1px solid rgba(183,110,116,.45);display:flex;align-items:center;justify-content:center;color:#b76e74;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg></span>
-            <div><div style="font:700 14.5px/1.2 Inter,sans-serif;color:#29231d;">Bloom</div><div style="font:400 13px/1.4 Inter,sans-serif;color:#8a7d6b;margin-top:2px;">Dynamic blooming motion</div></div>
-          </div>
-          <div style="display:flex;align-items:center;gap:12px;">
-            <span style="flex:none;width:44px;height:44px;border-radius:50%;border:1px solid rgba(192,122,91,.5);display:flex;align-items:center;justify-content:center;color:#c07a5b;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><circle cx="12" cy="12" r="4.4"/><line x1="12" y1="2.6" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="21.4"/><line x1="2.6" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="21.4" y2="12"/><line x1="5" y1="5" x2="7.4" y2="7.4"/><line x1="16.6" y1="16.6" x2="19" y2="19"/><line x1="5" y1="19" x2="7.4" y2="16.6"/><line x1="16.6" y1="7.4" x2="19" y2="5"/></svg></span>
-            <div><div style="font:700 14.5px/1.2 Inter,sans-serif;color:#29231d;">Glow</div><div style="font:400 13px/1.4 Inter,sans-serif;color:#8a7d6b;margin-top:2px;">Cozy built-in night light</div></div>
-          </div>
-          <div style="display:flex;align-items:center;gap:12px;">
-            <span style="flex:none;width:44px;height:44px;border-radius:50%;border:1px solid rgba(127,150,112,.5);display:flex;align-items:center;justify-content:center;color:#5f7853;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"><path d="M12 3.4c0 0 5.4 5.9 5.4 9.9a5.4 5.4 0 0 1-10.8 0C6.6 9.3 12 3.4 12 3.4z"/></svg></span>
-            <div><div style="font:700 14.5px/1.2 Inter,sans-serif;color:#29231d;">Aroma</div><div style="font:400 13px/1.4 Inter,sans-serif;color:#8a7d6b;margin-top:2px;">Holds a signature scent</div></div>
-          </div>
-          <div style="display:flex;align-items:center;gap:12px;">
-            <span style="flex:none;width:44px;height:44px;border-radius:50%;border:1px solid rgba(138,125,107,.5);display:flex;align-items:center;justify-content:center;color:#8a7d6b;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><circle cx="12" cy="12" r="9"/><line x1="6" y1="6" x2="18" y2="18" strokeLinecap="round"/></svg></span>
-            <div><div style="font:700 14.5px/1.2 Inter,sans-serif;color:#29231d;">No glue</div><div style="font:400 13px/1.4 Inter,sans-serif;color:#8a7d6b;margin-top:2px;">No tools required</div></div>
-          </div>
-        </div>
+        <p style="margin:24px 0 0;font:400 clamp(16px,1.45vw,18px)/1.75 Inter,sans-serif;color:#5c534a;max-width:56ch;">In today&rsquo;s world, meaningful moments are becoming increasingly rare, while the time we dedicate to someone has become one of the most valuable gifts we can give. That&rsquo;s why every UGEARS Inflorescence flower begins long before it is given&mdash;with the time and care invested in building it, transforming a meaningful gesture into something tangible.</p>
+        <p style="margin:16px 0 0;font:400 clamp(15px,1.4vw,17px)/1.75 Inter,sans-serif;color:#7d7264;max-width:56ch;">Once assembled, each flower comes to life. The petals gently open and close, revealing the inner mechanics. Warm LED lighting and a removable fragrance insert turn it into a lasting reminder of the time, care, and love behind every flower.</p>
       </div>
       <div data-reveal data-reveal-delay="120">
         <!-- Asset note: product overview uses the clean tulip set loop; replace with a final assembled bouquet hero shot if a higher-quality campaign asset arrives. -->
@@ -209,28 +174,25 @@ html.reveal-js [data-reveal][data-reveal-state="visible"]{opacity:1;transform:tr
 
     <div data-reveal style="margin-top:clamp(46px,6vw,84px);">
       <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:22px;">
-        <span style="font:italic 500 24px/1 'Fixel Display',sans-serif;color:#29231d;">See it from every angle</span>
+        <span style="font:italic 500 24px/1 'Fixel Display',sans-serif;color:#29231d;">Key features</span>
       </div>
-      <div style="{{ galleryGridStyle }}">
-        <sc-for list="{{ galleryImages }}" as="g" hint-placeholder-count="4">
-          <article aria-label="{{ g.label }}" style="{{ galleryItemStyle }}">
-            <div style="position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#fbf6ee;border:1px solid rgba(41,35,29,.1);transition:transform .3s ease,box-shadow .3s ease;" style-hover="transform:translateY(-4px);box-shadow:0 18px 40px -22px rgba(41,35,29,.5);">
-              <sc-if value="{{ g.isVideo }}" hint-placeholder-val="{{ true }}">
-                <video aria-label="{{ g.alt }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" style="width:100%;height:100%;object-fit:cover;display:block;">
-                  <source src="{{ g.src }}" type="video/mp4"/>
-                </video>
-              </sc-if>
-              <sc-if value="{{ g.isImage }}" hint-placeholder-val="{{ false }}">
-                <img src="{{ g.src }}" alt="{{ g.alt }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-              </sc-if>
+      <div style="{{ featureStripStyle }}">
+        <sc-for list="{{ featureCards }}" as="feature" hint-placeholder-count="4">
+          <article aria-label="{{ feature.title }}" style="{{ feature.itemStyle }}" style-hover="transform:translateY(-4px);">
+            <div style="aspect-ratio:4/3;border-radius:12px 12px 0 0;overflow:hidden;background:#fbf6ee;border-bottom:1px solid rgba(41,35,29,.08);">
+              <img src="{{ feature.src }}" alt="{{ feature.alt }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+            </div>
+            <div style="padding:16px 18px 18px;">
+              <h3 style="margin:0;font:800 16px/1.2 Inter,sans-serif;color:#29231d;">{{ feature.title }}</h3>
+              <p style="margin:8px 0 0;font:400 14px/1.55 Inter,sans-serif;color:#7d7264;max-width:34ch;">{{ feature.text }}</p>
             </div>
           </article>
         </sc-for>
       </div>
     </div>
     <div data-reveal style="margin-top:clamp(44px,5vw,60px);display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;">
-      <button onClick="{{ goVip }}" style="display:inline-flex;align-items:center;gap:10px;padding:16px 28px;background:#b76e74;color:#fdf7ef;border:none;border-radius:100px;font:700 15px/1 Inter,sans-serif;letter-spacing:.01em;cursor:pointer;transition:background .2s,transform .2s;" style-hover="background:#a05a60;transform:translateY(-2px);">Reserve your spot for $1</button>
-      <span style="font:500 13.5px/1.5 Inter,sans-serif;color:#8a7d6b;">Reserve now and save up to 40%.</span>
+      <button onClick="{{ goPlan }}" style="display:inline-flex;align-items:center;gap:10px;padding:16px 28px;background:#b76e74;color:#fdf7ef;border:none;border-radius:100px;font:700 15px/1 Inter,sans-serif;letter-spacing:.01em;cursor:pointer;transition:background .2s,transform .2s;" style-hover="background:#a05a60;transform:translateY(-2px);">Unlock Secret 40% OFF</button>
+      <span style="font:500 13.5px/1.5 Inter,sans-serif;color:#8a7d6b;">Choose free launch updates or unlock VIP access.</span>
     </div>
   </div>
 </section>
@@ -239,9 +201,8 @@ html.reveal-js [data-reveal][data-reveal-state="visible"]{opacity:1;transform:tr
   <div style="max-width:1600px;margin:0 auto;">
     <div data-reveal style="max-width:760px;">
       <div style="font:800 11.5px/1 Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7f9670;margin-bottom:18px;">Five stages of love</div>
-      <h2 style="margin:0;font:700 clamp(34px,4.6vw,58px)/1.04 'Fixel Display',sans-serif;letter-spacing:-.01em;color:#29231d;">Each flower carries its own meaning</h2>
-      <p style="margin:24px 0 0;font:400 clamp(16px,1.45vw,18px)/1.75 Inter,sans-serif;color:#5c534a;max-width:60ch;">Flowers have long been a universal symbol of emotion and connection. In our collection, each flower carries its own meaning, reflecting a different feeling, moment, or stage of love.</p>
-      <p style="margin:16px 0 0;font:400 clamp(15px,1.4vw,17px)/1.75 Inter,sans-serif;color:#7d7264;max-width:60ch;">Every relationship unfolds over time, growing through moments that shape how we feel, connect, and remember. That&rsquo;s why we&rsquo;ve defined five stages of love &mdash; each expressed through a flower. Choose the one that speaks to you, a few, or collect all five.</p>
+      <h2 style="margin:0;font:700 clamp(34px,4.6vw,58px)/1.04 'Fixel Display',sans-serif;letter-spacing:-.01em;color:#29231d;">Five stages of love, expressed through five flowers.</h2>
+      <p style="margin:24px 0 0;font:400 clamp(16px,1.45vw,18px)/1.75 Inter,sans-serif;color:#5c534a;max-width:64ch;">Flowers have long been a universal symbol of emotion and connection. Every relationship is shaped by meaningful moments that define how we feel, grow, and connect. That&rsquo;s why each flower in the UGEARS Inflorescence collection represents a different stage of the journey&mdash;from the first spark of love to the feeling of finding home. Every flower carries its own symbolism, message, and meaning, helping you express exactly what words sometimes cannot.</p>
     </div>
 
     <div data-reveal style="{{ flowerGridStyle }}">
@@ -261,11 +222,57 @@ html.reveal-js [data-reveal][data-reveal-state="visible"]{opacity:1;transform:tr
 
     <!-- Asset note: replace this collection banner with the final Kickstarter "stages of love" artwork when available. -->
     <div data-reveal style="margin-top:18px;position:relative;aspect-ratio:2/1;border-radius:14px;overflow:hidden;background:#fbf6ee;border:1px solid rgba(41,35,29,.08);">
-      <img src="uploads/photo-ready/usable-originals/lineup-all-flowers.png" alt="Five mechanical flowers in the Inflorescence collection" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+      <img src="uploads/photo-ready/usable-originals/lineup-all-flowers.png" alt="Five mechanical flowers in the UGEARS Inflorescence collection" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;"/>
     </div>
     <div data-reveal style="margin-top:clamp(40px,5vw,56px);display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;">
-      <button onClick="{{ goVip }}" style="display:inline-flex;align-items:center;gap:10px;padding:16px 28px;background:#b76e74;color:#fdf7ef;border:none;border-radius:100px;font:700 15px/1 Inter,sans-serif;letter-spacing:.01em;cursor:pointer;transition:background .2s,transform .2s;" style-hover="background:#a05a60;transform:translateY(-2px);">Reserve your spot for $1</button>
+      <button onClick="{{ goPlan }}" style="display:inline-flex;align-items:center;gap:10px;padding:16px 28px;background:#b76e74;color:#fdf7ef;border:none;border-radius:100px;font:700 15px/1 Inter,sans-serif;letter-spacing:.01em;cursor:pointer;transition:background .2s,transform .2s;" style-hover="background:#a05a60;transform:translateY(-2px);">Unlock Secret 40% OFF</button>
       <span style="font:500 13.5px/1.5 Inter,sans-serif;color:#8a7d6b;">Super Early Bird pricing</span>
+    </div>
+  </div>
+</section>
+
+<section id="plan" style="scroll-margin-top:100px;padding:clamp(76px,10vw,132px) clamp(20px,5vw,40px);background:#f7f1e7;">
+  <div style="max-width:1600px;margin:0 auto;display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,72px);align-items:flex-start;">
+    <div data-reveal style="flex:1 1 290px;min-width:min(100%,260px);">
+      <div style="display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:100px;background:#e8f7ef;color:#105d3c;font:800 10.5px/1 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px;"><img class="ks-logo ks-logo--word-small" src="uploads/kickstarter-wordmark-green.png" alt="Kickstarter"/><span>launch</span></div>
+      <h2 style="margin:0;font:700 clamp(34px,4.5vw,56px)/1.05 'Fixel Display',sans-serif;letter-spacing:-.01em;color:#29231d;">How do you want to join the launch?</h2>
+      <p style="margin:18px 0 0;max-width:42ch;font:400 clamp(16px,1.45vw,18px)/1.7 Inter,sans-serif;color:#5c534a;">Get notified when we launch, or unlock secret VIP rewards with a $1 reservation.</p>
+    </div>
+
+    <div data-reveal data-reveal-delay="120" style="flex:2 1 620px;min-width:min(100%,280px);display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;">
+      <article style="display:flex;flex-direction:column;background:#fbf6ee;border:1px solid rgba(41,35,29,.1);border-radius:16px;overflow:hidden;">
+        <div style="padding:24px 24px 20px;border-bottom:1px solid rgba(41,35,29,.08);">
+          <div style="font:800 12px/1 Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7f9670;">Free Access</div>
+          <div style="margin-top:14px;font:700 clamp(28px,3vw,38px)/1 'Fixel Display',sans-serif;color:#29231d;">Free</div>
+        </div>
+        <dl style="margin:0;padding:4px 24px 8px;display:grid;grid-template-columns:minmax(92px,.8fr) minmax(0,1.2fr);gap:0;">
+          <dt style="padding:14px 0;border-bottom:1px solid rgba(41,35,29,.08);font:700 12px/1.35 Inter,sans-serif;color:#8a7d6b;">You&rsquo;ll receive</dt><dd style="margin:0;padding:14px 0;border-bottom:1px solid rgba(41,35,29,.08);font:600 13.5px/1.45 Inter,sans-serif;color:#29231d;">Launch notification</dd>
+          <dt style="padding:14px 0;border-bottom:1px solid rgba(41,35,29,.08);font:700 12px/1.35 Inter,sans-serif;color:#8a7d6b;">Discount</dt><dd style="margin:0;padding:14px 0;border-bottom:1px solid rgba(41,35,29,.08);font:600 13.5px/1.45 Inter,sans-serif;color:#29231d;">Up to 25% OFF</dd>
+          <dt style="padding:14px 0;border-bottom:1px solid rgba(41,35,29,.08);font:700 12px/1.35 Inter,sans-serif;color:#8a7d6b;">Reward type</dt><dd style="margin:0;padding:14px 0;border-bottom:1px solid rgba(41,35,29,.08);font:600 13.5px/1.45 Inter,sans-serif;color:#29231d;">Public Early Bird rewards</dd>
+          <dt style="padding:14px 0;font:700 12px/1.35 Inter,sans-serif;color:#8a7d6b;">Competition</dt><dd style="margin:0;padding:14px 0;font:600 13.5px/1.45 Inter,sans-serif;color:#29231d;">Open to all backers - highest competition</dd>
+        </dl>
+        <div style="margin-top:auto;padding:20px 24px 24px;">
+          <a href="https://www.kickstarter.com" target="_blank" rel="noopener" style="width:100%;display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:100px;background:#efe4d3;color:#29231d;font:800 14px/1 Inter,sans-serif;letter-spacing:.01em;">Notify me on launch</a>
+        </div>
+      </article>
+
+      <article style="display:flex;flex-direction:column;background:#29231d;color:#f8f0e5;border:1px solid rgba(41,35,29,.18);border-radius:16px;overflow:hidden;">
+        <div style="padding:24px 24px 20px;border-bottom:1px solid rgba(245,238,226,.12);">
+          <div style="font:800 12px/1 Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#f0c9c4;">$1 VIP Access</div>
+          <div style="margin-top:14px;font:700 clamp(28px,3vw,38px)/1 'Fixel Display',sans-serif;color:#ffffff;">$1</div>
+        </div>
+        <dl style="margin:0;padding:4px 24px 8px;display:grid;grid-template-columns:minmax(92px,.8fr) minmax(0,1.2fr);gap:0;">
+          <dt style="padding:14px 0;border-bottom:1px solid rgba(245,238,226,.12);font:700 12px/1.35 Inter,sans-serif;color:#b0a493;">You&rsquo;ll receive</dt><dd style="margin:0;padding:14px 0;border-bottom:1px solid rgba(245,238,226,.12);font:600 13.5px/1.45 Inter,sans-serif;color:#f8f0e5;">Private Super Early Bird access</dd>
+          <dt style="padding:14px 0;border-bottom:1px solid rgba(245,238,226,.12);font:700 12px/1.35 Inter,sans-serif;color:#b0a493;">Discount</dt><dd style="margin:0;padding:14px 0;border-bottom:1px solid rgba(245,238,226,.12);font:600 13.5px/1.45 Inter,sans-serif;color:#f8f0e5;">Up to 40% OFF</dd>
+          <dt style="padding:14px 0;border-bottom:1px solid rgba(245,238,226,.12);font:700 12px/1.35 Inter,sans-serif;color:#b0a493;">Reward type</dt><dd style="margin:0;padding:14px 0;border-bottom:1px solid rgba(245,238,226,.12);font:600 13.5px/1.45 Inter,sans-serif;color:#f8f0e5;">Secret Super Early Bird rewards</dd>
+          <dt style="padding:14px 0;border-bottom:1px solid rgba(245,238,226,.12);font:700 12px/1.35 Inter,sans-serif;color:#b0a493;">Competition</dt><dd style="margin:0;padding:14px 0;border-bottom:1px solid rgba(245,238,226,.12);font:600 13.5px/1.45 Inter,sans-serif;color:#f8f0e5;">Available only to VIP supporters - lower competition</dd>
+          <dt style="padding:14px 0;border-bottom:1px solid rgba(245,238,226,.12);font:700 12px/1.35 Inter,sans-serif;color:#b0a493;">Bonus</dt><dd style="margin:0;padding:14px 0;border-bottom:1px solid rgba(245,238,226,.12);font:600 13.5px/1.45 Inter,sans-serif;color:#f8f0e5;">Free Fidget Set included with your Secret Super Early Bird reward</dd>
+          <dt style="padding:14px 0;font:700 12px/1.35 Inter,sans-serif;color:#b0a493;">Community</dt><dd style="margin:0;padding:14px 0;font:600 13.5px/1.45 Inter,sans-serif;color:#f8f0e5;">Private community with exclusive updates &amp; behind-the-scenes content</dd>
+        </dl>
+        <div style="margin-top:auto;padding:20px 24px 24px;">
+          <button onClick="{{ goVip }}" style="width:100%;display:flex;align-items:center;justify-content:center;min-height:50px;border:none;border-radius:100px;background:#c07a80;color:#fdf7ef;font:800 14px/1 Inter,sans-serif;letter-spacing:.01em;cursor:pointer;transition:background .2s,transform .2s;" style-hover="background:#a86169;transform:translateY(-2px);">Unlock for $1</button>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -285,8 +292,8 @@ html.reveal-js [data-reveal][data-reveal-state="visible"]{opacity:1;transform:tr
     <div style="display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,64px);align-items:flex-start;">
       <div data-reveal style="flex:1 1 380px;min-width:min(100%,380px);">
         <div style="font:800 11.5px/1 Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#e7c4c0;margin-bottom:18px;">VIP early access</div>
-        <h2 style="margin:0;font:700 clamp(36px,4.8vw,62px)/1.02 'Fixel Display',sans-serif;letter-spacing:-.01em;color:#f8f0e5;">Reserve your spot for $1 &mdash; <span style="color:#f0c9c4;">save up to 40%</span></h2>
-        <p style="margin:22px 0 0;font:400 clamp(16px,1.5vw,19px)/1.65 Inter,sans-serif;color:#e9ddcb;max-width:52ch;">Inflorescence is coming to Kickstarter, and we&rsquo;re reserving something special for the people who already understand why this matters. Booking your VIP spot unlocks our secret <em style="font-style:italic;color:#f0c9c4;">Super Early Bird</em> rewards.</p>
+        <h2 style="margin:0;font:700 clamp(36px,4.8vw,62px)/1.02 'Fixel Display',sans-serif;letter-spacing:-.01em;color:#f8f0e5;">Unlock Secret Rewards and <span style="color:#f0c9c4;">save up to 40%</span></h2>
+        <p style="margin:22px 0 0;font:400 clamp(16px,1.5vw,19px)/1.65 Inter,sans-serif;color:#e9ddcb;max-width:52ch;">UGEARS Inflorescence is coming to Kickstarter, and we have something special for the people who already understand why this matters. Unlock VIP Access to receive a private link to our secret <em style="font-style:italic;color:#f0c9c4;">Super Early Bird</em> rewards with our best available prices.</p>
         <ul style="list-style:none;margin:30px 0 0;padding:0;display:flex;flex-direction:column;gap:15px;">
           <sc-for list="{{ vipBenefits }}" as="b" hint-placeholder-count="4">
             <li style="display:flex;align-items:center;gap:13px;font:500 clamp(15px,1.4vw,17px)/1.4 Inter,sans-serif;color:#f2e8d8;">
@@ -307,10 +314,10 @@ html.reveal-js [data-reveal][data-reveal-state="visible"]{opacity:1;transform:tr
         </div>
         <div style="display:flex;align-items:center;gap:8px;margin-top:18px;font:500 13px/1.4 Inter,sans-serif;color:#e9ddcb;">
           <span style="flex:none;width:8px;height:8px;border-radius:50%;background:#c98288;box-shadow:0 0 0 4px rgba(201,130,136,.22);"></span>
-          Only <strong style="font-weight:800;color:#f0c9c4;">{{ spotsLeft }}</strong> Super Early Bird sets at this price
+          Private Kickstarter link for Secret Super Early Bird rewards
         </div>
-        <button onClick="{{ goVip }}" style="width:100%;margin-top:22px;padding:18px;background:#c07a80;color:#fdf7ef;border:none;border-radius:11px;font:800 16px/1 Inter,sans-serif;letter-spacing:.01em;cursor:pointer;transition:background .2s;" style-hover="background:#a86169;">Reserve for $1</button>
-        <p style="margin:13px 0 0;font:400 11.5px/1.5 Inter,sans-serif;color:#b0a493;text-align:center;">A non-refundable $1 deposit that guarantees your lowest price and exclusive bonus &mdash; credited toward your Kickstarter pledge at launch.</p>
+        <button onClick="{{ goVip }}" style="width:100%;margin-top:22px;padding:18px;background:#c07a80;color:#fdf7ef;border:none;border-radius:11px;font:800 16px/1 Inter,sans-serif;letter-spacing:.01em;cursor:pointer;transition:background .2s;" style-hover="background:#a86169;">Unlock for $1</button>
+        <p style="margin:13px 0 0;font:400 11.5px/1.5 Inter,sans-serif;color:#b0a493;text-align:center;">A non-refundable $1 VIP access payment unlocks your private Kickstarter link and exclusive campaign offers.</p>
       </div>
     </div>
 
@@ -326,27 +333,14 @@ html.reveal-js [data-reveal][data-reveal-state="visible"]{opacity:1;transform:tr
       </div>
     </div>
 
-    <div data-reveal style="margin-top:26px;background:rgba(247,241,231,.05);border:1px solid rgba(245,238,226,.14);border-radius:18px;padding:clamp(26px,3.4vw,40px);display:flex;flex-wrap:wrap;gap:clamp(26px,4vw,48px);align-items:center;">
-      <div style="flex:1 1 300px;min-width:min(100%,280px);">
-        <div style="font:800 11px/1 Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#c9a56f;margin-bottom:14px;">Inflorescence fidgets bonus</div>
-        <h3 style="margin:0;font:700 clamp(26px,3vw,36px)/1.1 'Fixel Display',sans-serif;color:#f8f0e5;">A little something before the flowers bloom</h3>
-        <p style="margin:16px 0 0;font:400 15px/1.65 Inter,sans-serif;color:#d8cbb8;max-width:46ch;">Only VIP backers receive an exclusive set of five mechanical fidgets inspired by the collection &mdash; miniature tulips, roses, lotuses, orchids and magnolias. Cute, playful, and satisfying to fidget with. Our way of saying thank you.</p>
-      </div>
-      <div style="flex:1 1 320px;min-width:min(100%,280px);">
-        <!-- Asset note: replace with the final VIP fidgets full-set photo when supplied. Current image keeps the block visual without showing production notes. -->
-        <div style="aspect-ratio:2/1;border-radius:12px;overflow:hidden;background:#201812;border:1px solid rgba(245,238,226,.14);transition:transform .3s;" style-hover="transform:translateY(-4px);">
-          <img src="uploads/photo-ready/usable-originals/lineup-all-flowers.png" alt="Ugears mechanical flower collection" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
 <section id="process" style="scroll-margin-top:100px;padding:clamp(76px,10vw,132px) clamp(20px,5vw,40px);background:#f7f1e7;">
   <div style="max-width:1600px;margin:0 auto;">
     <div data-reveal style="max-width:680px;">
-      <div style="font:800 11.5px/1 Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#c07a5b;margin-bottom:18px;">How it works &middot; choose &middot; build &middot; gift &middot; delight</div>
-      <h2 style="margin:0;font:700 clamp(34px,4.6vw,58px)/1.04 'Fixel Display',sans-serif;letter-spacing:-.01em;color:#29231d;">From flat-pack to bloom in an afternoon</h2>
+      <div style="font:800 11.5px/1 Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#c07a5b;margin-bottom:18px;">How it works</div>
+      <h2 style="margin:0;font:700 clamp(34px,4.6vw,58px)/1.04 'Fixel Display',sans-serif;letter-spacing:-.01em;color:#29231d;">The journey from heart to hands</h2>
     </div>
     <div data-reveal style="margin-top:clamp(40px,5vw,60px);display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;">
       <sc-for list="{{ assemblySteps }}" as="s" hint-placeholder-count="4">
@@ -370,7 +364,7 @@ html.reveal-js [data-reveal][data-reveal-state="visible"]{opacity:1;transform:tr
       </sc-for>
     </div>
     <div data-reveal style="margin-top:clamp(40px,5vw,56px);display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;">
-      <button onClick="{{ goVip }}" style="display:inline-flex;align-items:center;gap:10px;padding:16px 28px;background:#b76e74;color:#fdf7ef;border:none;border-radius:100px;font:700 15px/1 Inter,sans-serif;letter-spacing:.01em;cursor:pointer;transition:background .2s,transform .2s;" style-hover="background:#a05a60;transform:translateY(-2px);">Reserve your spot for $1</button>
+      <button onClick="{{ goPlan }}" style="display:inline-flex;align-items:center;gap:10px;padding:16px 28px;background:#b76e74;color:#fdf7ef;border:none;border-radius:100px;font:700 15px/1 Inter,sans-serif;letter-spacing:.01em;cursor:pointer;transition:background .2s,transform .2s;" style-hover="background:#a05a60;transform:translateY(-2px);">Unlock Secret 40% OFF</button>
       <span style="font:500 13.5px/1.5 Inter,sans-serif;color:#8a7d6b;">No glue, no tools and 40% off</span>
     </div>
   </div>
@@ -379,7 +373,7 @@ html.reveal-js [data-reveal][data-reveal-state="visible"]{opacity:1;transform:tr
 <section id="reviews" style="scroll-margin-top:100px;padding:clamp(76px,10vw,132px) clamp(20px,5vw,40px);background:#efe4d3;">
   <div style="max-width:1600px;margin:0 auto;">
     <div data-reveal style="text-align:center;max-width:680px;margin:0 auto;">
-      <div style="font:800 11.5px/1 Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7f9670;margin-bottom:18px;">Loved worldwide</div>
+      <div style="display:inline-flex;align-items:center;gap:8px;font:800 11.5px/1 Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#7f9670;margin-bottom:18px;"><img class="ks-logo ks-logo--k-large" src="uploads/kickstarter-k-green.png" alt="" aria-hidden="true"/>Loved worldwide</div>
       <h2 style="margin:0;font:700 clamp(34px,4.6vw,58px)/1.04 'Fixel Display',sans-serif;letter-spacing:-.01em;color:#29231d;">Trusted by backers across the globe</h2>
     </div>
 
@@ -396,7 +390,7 @@ html.reveal-js [data-reveal][data-reveal-state="visible"]{opacity:1;transform:tr
       </div>
     </div>
 
-    <p data-reveal style="margin:clamp(36px,4vw,52px) auto 0;max-width:64ch;text-align:center;font:400 clamp(16px,1.5vw,19px)/1.75 Inter,sans-serif;color:#5c534a;">The support of our community is what makes projects like this possible. Inflorescence carries the same attention to detail you&rsquo;ve come to expect from us &mdash; but this time it&rsquo;s shaped by something a little closer to the heart. We&rsquo;re proud to invite you to become part of this new chapter.</p>
+    <p data-reveal style="margin:clamp(36px,4vw,52px) auto 0;max-width:64ch;text-align:center;font:400 clamp(16px,1.5vw,19px)/1.75 Inter,sans-serif;color:#5c534a;">The support of our community is what makes projects like this possible. UGEARS Inflorescence carries the same attention to detail you&rsquo;ve come to expect from us &mdash; but this time it&rsquo;s shaped by something a little closer to the heart. We&rsquo;re proud to invite you to become part of this new chapter.</p>
 
     <div data-reveal style="margin-top:clamp(40px,5vw,58px);">
       <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:20px;">
@@ -418,8 +412,8 @@ html.reveal-js [data-reveal][data-reveal-state="visible"]{opacity:1;transform:tr
     </div>
 
     <div data-reveal style="margin-top:clamp(44px,5vw,60px);text-align:center;">
-      <button onClick="{{ goVip }}" style="display:inline-flex;align-items:center;gap:10px;padding:16px 28px;background:#b76e74;color:#fdf7ef;border:none;border-radius:100px;font:700 15px/1 Inter,sans-serif;letter-spacing:.01em;cursor:pointer;transition:background .2s,transform .2s;" style-hover="background:#a05a60;transform:translateY(-2px);">Reserve your spot for $1</button>
-      <p style="margin:14px 0 0;font:500 13.5px/1.5 Inter,sans-serif;color:#8a7d6b;">Join 14,000+ backers and lock in your VIP</p>
+      <button onClick="{{ goPlan }}" style="display:inline-flex;align-items:center;gap:10px;padding:16px 28px;background:#b76e74;color:#fdf7ef;border:none;border-radius:100px;font:700 15px/1 Inter,sans-serif;letter-spacing:.01em;cursor:pointer;transition:background .2s,transform .2s;" style-hover="background:#a05a60;transform:translateY(-2px);">Unlock Secret 40% OFF</button>
+      <p style="margin:14px 0 0;font:500 13.5px/1.5 Inter,sans-serif;color:#8a7d6b;">Join 14,000+ backers and unlock VIP access</p>
     </div>
   </div>
 </section>
@@ -431,7 +425,7 @@ html.reveal-js [data-reveal][data-reveal-state="visible"]{opacity:1;transform:tr
       <h2 style="margin:0;font:700 clamp(34px,4.6vw,58px)/1.04 'Fixel Display',sans-serif;letter-spacing:-.01em;color:#29231d;">Questions, answered</h2>
     </div>
     <div data-reveal style="border-bottom:1px solid rgba(41,35,29,.14);">
-      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="7">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="6">
         <div style="border-top:1px solid rgba(41,35,29,.14);">
           <button onClick="{{ f.onClick }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:24px 4px;background:none;border:none;cursor:pointer;text-align:left;">
             <span style="font:500 clamp(19px,2vw,23px)/1.3 'Fixel Display',sans-serif;color:#29231d;">{{ f.q }}</span>
@@ -466,12 +460,12 @@ html.reveal-js [data-reveal][data-reveal-state="visible"]{opacity:1;transform:tr
   <div style="position:relative;z-index:1;padding:clamp(70px,9vw,110px) clamp(20px,5vw,40px) clamp(48px,6vw,72px);max-width:1600px;margin:0 auto;">
     <div data-reveal style="text-align:center;max-width:600px;margin:0 auto;">
       <h2 style="margin:0;font:700 clamp(38px,5.4vw,68px)/1.02 'Fixel Display',sans-serif;letter-spacing:-.015em;color:#f6f4ea;">Don&rsquo;t miss the bloom</h2>
-      <p style="margin:18px 0 0;font:400 clamp(15px,1.4vw,17px)/1.6 Inter,sans-serif;color:#c3ccbb;">Reserve your VIP spot for $1 before Kickstarter opens on 8 September 2026 &mdash; lock in your lowest price and unlock exclusive Super Early Bird rewards.</p>
+      <p style="margin:18px 0 0;font:400 clamp(15px,1.4vw,17px)/1.6 Inter,sans-serif;color:#c3ccbb;">Unlock VIP Access for $1 before Kickstarter opens on 8 September 2026 and receive a private link to our secret Super Early Bird rewards.</p>
 
       <div style="margin-top:32px;display:flex;flex-direction:column;align-items:center;gap:16px;">
-        <button onClick="{{ goVip }}" style="display:inline-flex;align-items:center;gap:10px;padding:18px 34px;background:#c07a80;color:#fdf7ef;border:none;border-radius:100px;font:800 16px/1 Inter,sans-serif;letter-spacing:.01em;cursor:pointer;transition:background .2s,transform .2s;" style-hover="background:#a86169;transform:translateY(-2px);">Reserve your spot for $1</button>
-        <p style="margin:0;font:400 12.5px/1.5 Inter,sans-serif;color:#9aa891;max-width:46ch;">Non-refundable $1 deposit &mdash; credited toward your Kickstarter pledge at launch.</p>
-        <a href="https://www.kickstarter.com" target="_blank" rel="noopener" style="font:600 14px/1 Inter,sans-serif;color:#c3ccbb;text-decoration:underline;text-underline-offset:3px;">Follow us on Kickstarter &rarr;</a>
+        <button onClick="{{ goPlan }}" style="display:inline-flex;align-items:center;gap:10px;padding:18px 34px;background:#c07a80;color:#fdf7ef;border:none;border-radius:100px;font:800 16px/1 Inter,sans-serif;letter-spacing:.01em;cursor:pointer;transition:background .2s,transform .2s;" style-hover="background:#a86169;transform:translateY(-2px);">Unlock Secret 40% OFF</button>
+        <p style="margin:0;font:400 12.5px/1.5 Inter,sans-serif;color:#9aa891;max-width:46ch;">Non-refundable $1 VIP access payment for exclusive Kickstarter offers.</p>
+        <a href="https://www.kickstarter.com" target="_blank" rel="noopener" aria-label="Follow us on Kickstarter" style="display:inline-flex;align-items:center;gap:8px;font:600 14px/1 Inter,sans-serif;color:#c3ccbb;text-decoration:none;"><span style="text-decoration:underline;text-underline-offset:3px;">Follow us on</span><img class="ks-logo ks-logo--word" src="uploads/kickstarter-wordmark-green.png" alt="Kickstarter"/><span aria-hidden="true">&rarr;</span></a>
       </div>
     </div>
 
@@ -499,7 +493,7 @@ html.reveal-js [data-reveal][data-reveal-state="visible"]{opacity:1;transform:tr
     </div>
     <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;justify-content:space-between;font:400 12.5px/1.6 Inter,sans-serif;color:#9aa891;">
       <div style="display:flex;flex-wrap:wrap;gap:8px 18px;">
-        <span>&copy; 2026 Ugears &middot; Inflorescence</span>
+        <span>&copy; 2026 UGEARS &middot; UGEARS Inflorescence</span>
         <a href="#" style="color:#9aa891;text-decoration:underline;text-underline-offset:2px;">Privacy Policy</a>
         <a href="#" style="color:#9aa891;text-decoration:underline;text-underline-offset:2px;">Terms</a>
         <a href="#" style="color:#9aa891;text-decoration:underline;text-underline-offset:2px;">Cookie settings</a>
@@ -886,10 +880,10 @@ class Component extends DCLogic {
     // Responsive: below 720px these card grids become horizontal swipe sliders.
     const narrow = st.narrow;
     const slider = 'display:flex;gap:14px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scroll-padding-left:20px;margin-left:-20px;margin-right:-20px;padding:4px 20px 16px;';
-    const galleryGridStyle = narrow ? slider : 'display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;';
-    const galleryItemStyle = (narrow ? 'flex:0 0 82%;max-width:330px;scroll-snap-align:start;' : '') + 'padding:0;border:none;background:none;';
     const flowerGridStyle = 'margin-top:clamp(40px,5vw,60px);' + (narrow ? slider : 'display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;align-items:stretch;');
     const flowerItemStyle = (narrow ? 'flex:0 0 80%;max-width:300px;scroll-snap-align:start;' : '') + 'display:flex;flex-direction:column;text-align:left;background:#fbf6ee;border:1px solid rgba(41,35,29,.09);border-radius:14px;padding:14px;transition:transform .3s ease,box-shadow .3s ease;';
+    const featureStripStyle = 'display:flex;gap:16px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;padding:4px 0 18px;';
+    const featureItemStyle = (size) => 'flex:0 0 ' + (narrow ? '82%' : size) + ';max-width:' + (narrow ? '330px' : 'none') + ';scroll-snap-align:start;background:#fbf6ee;border:1px solid rgba(41,35,29,.1);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s ease;';
     const reviewsGridStyle = narrow ? 'display:flex;flex-direction:column;gap:16px;' : 'display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;';
     const reviewItemStyle = 'margin:0;background:#fbf6ee;border:1px solid rgba(41,35,29,.08);border-radius:16px;padding:clamp(22px,6vw,26px);display:flex;flex-direction:column;gap:16px;';
     const swipeHintStyle = narrow ? 'display:flex;align-items:center;gap:7px;margin:0 0 13px;font:700 10px/1 Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#b09a91;' : 'display:none;';
@@ -913,6 +907,7 @@ class Component extends DCLogic {
     const navLinks = [
       { t: 'The flowers', href: '#product' },
       { t: 'Five stages', href: '#collection' },
+      { t: 'Launch options', href: '#plan' },
       { t: 'VIP $1', href: '#vip' },
       { t: 'How it works', href: '#process' },
       { t: 'Reviews', href: '#reviews' },
@@ -923,12 +918,12 @@ class Component extends DCLogic {
 
     const withMediaFlags = (item) => ({ ...item, isVideo: item.mediaType === 'video', isImage: item.mediaType !== 'video' });
 
-    const galleryImages = [
-      { label: 'Assembled bloom', mediaType: 'image', src: 'uploads/photo-ready/gallery-stills/assembled-bloom.jpg', alt: 'Assembled mechanical tulip model in bloom' },
-      { label: 'Parts kit', mediaType: 'image', src: 'uploads/photo-ready/gallery-stills/parts-kit.jpg', alt: 'Inflorescence parts kit and assembled tulip model' },
-      { label: 'Petal material', mediaType: 'image', src: 'uploads/photo-ready/gallery-stills/petal-material.jpg', alt: 'Close-up of flexible flower petal material' },
-      { label: 'Mechanics detail', mediaType: 'image', src: 'uploads/photo-ready/gallery-stills/mechanics-detail.jpg', alt: 'Close-up of the mechanical flower base and internal details' },
-    ].map(withMediaFlags);
+    const featureCards = [
+      { title: 'Dynamic blooming', text: 'Petals open and close in a slow, calming rhythmic motion.', src: 'uploads/photo-ready/usable-originals/set-tulip-motion.gif', alt: 'UGEARS Inflorescence tulip petals opening and closing', size: 'clamp(360px,34vw,560px)' },
+      { title: 'Cozy night light', text: 'Soft LED lights create beautiful shadows and a relaxing atmosphere.', src: 'uploads/photo-ready/usable-originals/led-glow.gif', alt: 'UGEARS Inflorescence flower glowing as a night light', size: 'clamp(300px,27vw,420px)' },
+      { title: 'Fragrance insert', text: 'A dedicated insert holds your favorite fragrance for a personal scent experience.', src: 'uploads/photo-ready/gallery-stills/petal-material.jpg', alt: 'Close-up of UGEARS Inflorescence flower petal material and fragrance detail', size: 'clamp(360px,34vw,560px)' },
+      { title: 'No glue', text: 'Everything you need is included in the box, no glue or special tools required.', src: 'uploads/photo-ready/gallery-stills/parts-kit.jpg', alt: 'UGEARS Inflorescence kit parts arranged before assembly', size: 'clamp(300px,27vw,420px)' },
+    ].map((feature) => ({ ...feature, itemStyle: featureItemStyle(feature.size) }));
 
     const flowerAssetByName = {
       Tulip: 'uploads/photo-ready/meaning/tulip.png',
@@ -939,7 +934,7 @@ class Component extends DCLogic {
     };
     const flowerModels = [
       ['01', 'Tulip', 'Budding feelings', 'The beginning', 'The Tulip is where every story begins. Delicate yet full of promise, it captures the quiet moment when something new takes root.'],
-      ['02', 'Rose', 'Passion in bloom', 'The declaration', 'The Rose is the moment when feelings become undeniable \u2014 a bloom that embodies the fire of emotion and the energy of connection.'],
+      ['02', 'Rose', 'Passion in bloom', 'The declaration', 'The Rose is the moment when feelings become undeniable, embodying the fire of emotion and connection.'],
       ['03', 'Lotus', 'Steady ground', 'Support and calm', 'The Lotus is a symbol of inner strength. In moments of uncertainty, it becomes a reminder: you have someone to lean on.'],
       ['04', 'Orchid', 'Unique bond', 'Rare admiration', 'The Orchid celebrates finding someone truly your own \u2014 noticing the little things that make them irreplaceable.'],
       ['05', 'Magnolia', 'Shared belonging', 'Belonging', 'The Magnolia expresses everything that has been built over time \u2014 the feeling of being home in the presence of someone special.'],
@@ -950,13 +945,13 @@ class Component extends DCLogic {
     });
 
     const vipBenefits = [
-      'Secret Super Early Bird rewards',
+      'Private link to Secret Super Early Bird rewards',
       'Save up to 40% off future retail prices',
-      'VIP-only mechanical fidget set bonus',
-      'Private community access',
+      'Free mechanical fidget set with eligible Secret Super Early Bird reward',
+      'Private community access with exclusive updates',
     ];
     const vipSteps = [
-      { n: '1', t: 'Reserve your VIP spot for just $1' },
+      { n: '1', t: 'Unlock VIP Access for just $1' },
       { n: '2', t: 'Receive your private Kickstarter launch link' },
       { n: '3', t: 'Choose your flower and save up to 40% with Super Early Bird pricing' },
       { n: '4', t: 'Receive exclusive bonus fidgets with your pledge' },
@@ -966,8 +961,8 @@ class Component extends DCLogic {
 
     // Asset note: process cards use clean ready assets until final step-by-step campaign photography is supplied.
     const assemblySteps = [
-      { n: '01', t: 'Choose', d: 'Think about what you want to say \u2014 gratitude, devotion, encouragement, desire, or simply, \u201cI\u2019m here.\u201d', mediaType: 'image', src: 'uploads/photo-ready/usable-originals/lineup-all-flowers.png', alt: 'Complete Inflorescence flower collection' },
-      { n: '02', t: 'Build', d: 'Build with confidence: everything you need, including step-by-step instructions, is in the box. No glue or special tools required.', mediaType: 'image', src: 'uploads/photo-ready/usable-originals/assembly-kit-and-tulip.png', alt: 'Hands holding the Inflorescence assembly kit parts' },
+      { n: '01', t: 'Choose', d: 'Think about what you want to say \u2014 gratitude, devotion, encouragement, desire, or simply, \u201cI\u2019m here.\u201d', mediaType: 'image', src: 'uploads/photo-ready/usable-originals/lineup-all-flowers.png', alt: 'Complete UGEARS Inflorescence flower collection' },
+      { n: '02', t: 'Build', d: 'Build with confidence: everything you need, including step-by-step instructions, is in the box. No glue or special tools required.', mediaType: 'image', src: 'uploads/photo-ready/usable-originals/assembly-kit-and-tulip.png', alt: 'Hands holding the UGEARS Inflorescence assembly kit parts' },
       { n: '03', t: 'Gift', d: 'Present the flower to your loved one and share a moment of joy, surprise, and connection together.', mediaType: 'image', src: 'uploads/photo-ready/lifestyle-gift-couple.jpg', alt: 'Couple sharing a bouquet of pink tulips at home' },
       { n: '04', t: 'Delight', d: 'Fill her everyday life with warmth, beauty, soft light, and a personal scent \u2014 a gift she\u2019ll cherish for years.', mediaType: 'video', src: 'uploads/photo-ready/videos/night-light-glow.mp4', poster: 'uploads/photo-ready/usable-originals/led-glow.gif', alt: 'Mechanical flower glowing as a warm night light' },
     ].map(withMediaFlags);
@@ -987,13 +982,12 @@ class Component extends DCLogic {
     const ugcTiles = Array.from({ length: 8 }).map((_, i) => ({ i }));
 
     const faqBase = [
-      { q: 'How do you make sure the secret pledge is reserved for me?', a: 'We send your private Kickstarter link to the email address you use for your VIP reservation. To access the secret pledge, simply log in to Kickstarter using that same email address.' },
       { q: 'When will I receive my flowers?', a: 'We plan to start shipping Kickstarter rewards in November 2026. Most backers should receive their flowers by the end of December 2026.' },
       { q: 'Which countries do you ship to? How much is shipping?', a: 'We ship worldwide. Estimated shipping starts from: Europe $9.90, United Kingdom $15, United States $15, Canada $29, and the rest of the world $39.90 (final rates depend on your destination and selected reward). Customs fees may apply depending on your country\u2019s regulations and are the responsibility of the backer.' },
-      { q: 'Is the Super Early Bird price guaranteed?', a: 'Your VIP status gives you access to a secret Super Early Bird pledge available throughout the Kickstarter campaign. However, the number of rewards at this price is limited, so we recommend claiming yours as early as possible.' },
-      { q: 'Can I receive the bonus fidgets without backing a flower?', a: 'No. Bonus fidgets are available only when you back one of the eligible flower pledges during the Kickstarter campaign.' },
-      { q: 'Will the 40% discount be available without the $1 VIP reservation?', a: 'No. The exclusive Super Early Bird price is available only to VIP supporters who reserved their spot with the $1 VIP reservation \u2014 it will not be visible to other Kickstarter visitors.' },
-      { q: 'Is my $1 VIP reservation refundable?', a: 'No. The $1 VIP reservation is non-refundable and secures your access to exclusive Kickstarter offers.' },
+      { q: 'Does VIP Access guarantee a Secret Super Early Bird reward?', a: 'No. VIP Access guarantees access to a private link with our Secret Super Early Bird rewards offering discounts of up to 40% OFF. This private reward remains available throughout the Kickstarter campaign, but the number of rewards at these prices is limited. We recommend claiming yours as early as possible before they run out.' },
+      { q: 'Can I receive the bonus fidgets without backing the project?', a: 'No. The bonus fidget set is included only when you back an eligible Secret Super Early Bird pledge during the Kickstarter campaign. It is not included with any other pledge.' },
+      { q: 'Will the 40% discount be available without $1 VIP Access?', a: 'No. The exclusive Super Early Bird price is available only through $1 VIP Access and will not be visible to other Kickstarter visitors.' },
+      { q: 'Is my $1 VIP spot reservation refundable?', a: 'No. The $1 VIP spot reservation is non-refundable and secures your access to exclusive Kickstarter offers.' },
     ];
     const faqs = faqBase.map((f, i) => {
       const open = st.faqOpen === i;
@@ -1032,6 +1026,7 @@ class Component extends DCLogic {
       toggleMobile: this.toggleMobile,
       goTop: (e) => this.scrollTo('#top', e),
       goProduct: (e) => this.scrollTo('#product', e),
+      goPlan: (e) => this.scrollTo('#plan', e),
       goVip: (e) => this.scrollTo('#vip', e),
       goFooter: (e) => this.scrollTo('#footer', e),
 
@@ -1049,8 +1044,8 @@ class Component extends DCLogic {
       footerError: st.footerForm.status === 'error',
       footerMsg: st.footerForm.msg,
 
-      galleryGridStyle, galleryItemStyle, flowerGridStyle, flowerItemStyle, reviewsGridStyle, reviewItemStyle, swipeHintStyle,
-      mediaLogos, galleryImages, flowerModels, vipBenefits, vipSteps, fidgets,
+      featureStripStyle, flowerGridStyle, flowerItemStyle, reviewsGridStyle, reviewItemStyle, swipeHintStyle,
+      mediaLogos, featureCards, flowerModels, vipBenefits, vipSteps, fidgets,
       assemblySteps, stats, testimonials, ugcTiles, faqs, socials,
       spotsLeft: (this.props.spotsLeft != null ? this.props.spotsLeft : 187),
 
