@@ -183,6 +183,10 @@ html.reveal-js [data-reveal][data-reveal-state="visible"]{opacity:1;transform:tr
             <div style="aspect-ratio:4/3;overflow:hidden;background:#fbf6ee;">
               <img src="{{ feature.src }}" alt="{{ feature.alt }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;"/>
             </div>
+            <div style="padding:16px 18px 19px;">
+              <h3 style="margin:0;font:800 16px/1.25 Inter,sans-serif;color:#29231d;">{{ feature.title }}</h3>
+              <p style="margin:8px 0 0;font:400 14px/1.58 Inter,sans-serif;color:#6f655a;">{{ feature.text }}</p>
+            </div>
           </article>
         </sc-for>
       </div>
@@ -338,14 +342,13 @@ html.reveal-js [data-reveal][data-reveal-state="visible"]{opacity:1;transform:tr
       <div>
         <div style="font:800 11.5px/1 Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#c9a56f;margin-bottom:18px;">Exclusive VIP gift</div>
         <h2 style="margin:0;font:700 clamp(32px,4.2vw,52px)/1.04 'Fixel Display',sans-serif;letter-spacing:-.01em;color:#f8f0e5;">Inflorescence fidgets bonus</h2>
-        <p style="margin:22px 0 0;font:400 clamp(15px,1.4vw,18px)/1.72 Inter,sans-serif;color:#e9ddcb;max-width:58ch;">A little something before the flowers bloom. Only VIP supporters who back the campaign will receive an exclusive set of five mechanical fidgets inspired by the Inflorescence collection. These miniature tulips, roses, lotuses, orchids, and magnolias are exclusive to VIPs. Cute, playful, and satisfying to interact with, they&rsquo;re our way of saying thank you for supporting the project from the very beginning.</p>
+        <p style="margin:22px 0 0;font:400 clamp(15px,1.4vw,18px)/1.72 Inter,sans-serif;color:#e9ddcb;max-width:58ch;">A little something before the flowers bloom. Only VIP supporters who back the campaign will receive an exclusive set of five mechanical fidgets inspired by the Inflorescence collection.</p>
+        <p style="margin:14px 0 0;font:400 clamp(15px,1.4vw,18px)/1.72 Inter,sans-serif;color:#e9ddcb;max-width:58ch;">These miniature tulips, roses, lotuses, orchids, and magnolias are exclusive to VIPs. Cute, playful, and satisfying to interact with, they&rsquo;re our way of saying thank you for supporting the project from the very beginning.</p>
       </div>
       <div>
-        <!-- Asset note: temporary collection visual; replace with the final five-fidget bonus photograph when supplied. -->
         <div style="aspect-ratio:2/1;border-radius:16px;overflow:hidden;background:#f8f3ea;border:1px solid rgba(245,238,226,.18);box-shadow:0 28px 64px -34px rgba(0,0,0,.7);">
           <img src="uploads/photo-ready/usable-originals/fidgets-1440x720.jpg" alt="The five exclusive mechanical fidgets inspired by the Inflorescence collection" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;"/>
         </div>
-        <p style="margin:11px 0 0;font:500 11.5px/1.5 Inter,sans-serif;color:#b0a493;">Inspired by all five flowers in the Inflorescence collection.</p>
       </div>
     </div>
 
@@ -951,10 +954,10 @@ class Component extends DCLogic {
     const withMediaFlags = (item) => ({ ...item, isVideo: item.mediaType === 'video', isImage: item.mediaType !== 'video' });
 
     const featureCards = [
-      { title: 'Bloom', src: 'uploads/photo-ready/features/kvity_mrm_maket.png', alt: 'Bloom: mechanical tulip demonstrating its dynamic blooming motion' },
-      { title: 'Glow', src: 'uploads/photo-ready/features/kvity_mrm_maket2.png', alt: 'Glow: illuminated mechanical flower creating a cozy night-light atmosphere' },
-      { title: 'Aroma', src: 'uploads/photo-ready/features/kvity_mrm_maket3.png', alt: 'Aroma: fragrance oil being added to the flower scent insert' },
-      { title: 'No glue', src: 'uploads/photo-ready/features/kvity_mrm_maket4.png', alt: 'No glue: wooden kit parts being removed for tool-free assembly' },
+      { title: 'Dynamic blooming', text: 'Petals open and close in a slow, calming rhythmic motion.', src: 'uploads/photo-ready/features/kvity_mrm_maket.png', alt: 'Mechanical tulip demonstrating its dynamic blooming motion' },
+      { title: 'Cozy night light', text: 'Soft LED lights create beautiful shadows and a relaxing atmosphere.', src: 'uploads/photo-ready/features/kvity_mrm_maket2.png', alt: 'Illuminated mechanical flower creating a cozy night-light atmosphere' },
+      { title: 'Fragrance insert', text: 'A dedicated insert holds your favorite fragrance for a personal scent experience.', src: 'uploads/photo-ready/features/kvity_mrm_maket3.png', alt: 'Fragrance oil being added to the flower scent insert' },
+      { title: 'No glue', text: 'Everything you need is included in the box, no glue or special tools required.', src: 'uploads/photo-ready/features/kvity_mrm_maket4.png', alt: 'Wooden kit parts being removed for tool-free assembly' },
     ].map((feature) => ({ ...feature, itemStyle: featureItemStyle() }));
 
     const flowerAssetByName = {
